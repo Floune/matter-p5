@@ -2,9 +2,10 @@ class Ball {
 	constructor(x, y) {
 		this.x = x;
 		this.y = y;
-		this.r = 20
+		this.r = 10
 		this.color = this.randomColor()
 		this.body = Bodies.circle(this.x, this.y, this.r)
+		Matter.Body.setMass(this.body, 15)
 		World.add(world, this.body)		
 	}
 	

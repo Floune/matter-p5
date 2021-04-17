@@ -3,7 +3,7 @@ class Line {
 		this.x = x
 		this.y = y
 		this.w = w
-		this.h = 9
+		this.h = 3
 		this.t = t
 		this.body = Bodies.rectangle(x, y, w, this.h)
 		Body.rotate(this.body, this.t)
