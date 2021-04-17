@@ -3,7 +3,7 @@ class Line {
 		this.x = x
 		this.y = y
 		this.w = w
-		this.h = 3
+		this.h = 5
 		this.t = t
 		let vx = ex - x
 		let vy = ey - y

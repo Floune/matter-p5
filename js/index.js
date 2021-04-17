@@ -12,12 +12,11 @@ let MouseConstraint = Matter.MouseConstraint
 let mConstraint;
 
 
-
 let Body = Matter.Body
 let refX, refY;
 
 function setup() {
- let canvas = createCanvas(500, window.innerHeight); 
+ let canvas = createCanvas(window.innerWidth, window.innerHeight); 
  engine = Engine.create();
  world = engine.world
  ground = new Ground()
@@ -28,22 +27,21 @@ function setup() {
  canvasmouse.pixelRatio = pixelDensity()
  mConstraint = MouseConstraint.create(engine, {
   mouse: canvasmouse
- })
+})
  World.add(world, mConstraint)
 }
 
 function draw() {
  background(255);
- lines.forEach(line => {
+ if (keyIsPressed) {
+  balls.push(new Ball(mouseX, mouseY));
+}
+lines.forEach(line => {
   line.draw()
 })
- balls.forEach(balle => {
+balls.forEach(balle => {
   balle.draw()
 });
-}
-
-function keyPressed() {
-	balls.push(new Ball(mouseX, mouseY));
 }
 
 function mousePressed() {
@@ -62,7 +60,7 @@ function mouseReleased() {
 
 function getDistance(x1, y1, x2, y2) {
   var xs = x2 - x1,
-      ys = y2 - y1;   
+  ys = y2 - y1;   
   
   xs *= xs;
   ys *= ys;
