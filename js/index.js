@@ -85,7 +85,6 @@ function keyPressed() {
     balls.push(new Ball(mouseX, mouseY));
   } else if (keyCode === 85) {
     let toDelete = lines.pop()
-    console.log(toDelete)
     World.remove(world, toDelete.body)
   } else if (keyCode === 112) {
     legend = !legend
@@ -115,14 +114,8 @@ function resetBalls() {
 }
 
 function resetSketch() {
-  balls.forEach(toDelete => {
-    World.remove(world, toDelete.body)
-  })
-  lines.forEach(toDelete => {
-    World.remove(world, toDelete.body)
-  })
-  balls = []
-  lines = []
+  resetLines()
+  resetBalls()
 }
 
 function mouseReleased() {
