@@ -5,14 +5,25 @@ class Line {
 		this.w = w
 		this.h = 5
 		this.t = t
-		let vx = ex - x
-		let vy = ey - y
-		let vectouille = {x: vx / 2, y: vy / 2}
-		this.body = Bodies.rectangle(x, y, w, this.h)
+		this.vx = ex - x
+		this.vy = ey - y
+	}
+
+	init() {
+		this.createBody()
+		this.alignSomehow()
+	}
+
+	createBody() {
+		this.body = Bodies.rectangle(this.x, this.y, this.w, this.h)
+		World.add(world, this.body)
+		this.body.isStatic = true		
+	}
+
+	alignSomehow() {
+		let vectouille = {x: this.vx / 2, y: this.vy / 2}
 		Body.setAngle(this.body, this.t)
 		Body.translate(this.body, vectouille)
-		World.add(world, this.body)
-		this.body.isStatic = true
 	}
 
 	draw() {
@@ -24,7 +35,6 @@ class Line {
 		fill("black")
 		stroke("black")
 		rotate(angle)
-		// rect(this.w / 2, 0, this.w, this.h)
 		rect(0, 0, this.w, this.h)
 		pop()
 	}
