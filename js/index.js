@@ -5,16 +5,31 @@ let world;
 let Engine = Matter.Engine
 let World = Matter.World
 let Bodies = Matter.Bodies
+let Constraint = Matter.Constraint
+let Vector = Matter.Vector
+let Mouse = Matter.Mouse
+let MouseConstraint = Matter.MouseConstraint
+let mConstraint;
+
+
+
 let Body = Matter.Body
 let refX, refY;
 
 function setup() {
- createCanvas(500, window.innerHeight); 
+ let canvas = createCanvas(500, window.innerHeight); 
  engine = Engine.create();
  world = engine.world
  ground = new Ground()
  lines.push(ground)
  Engine.run(engine)
+
+ let canvasmouse = Mouse.create(canvas.elt)
+ canvasmouse.pixelRatio = pixelDensity()
+ mConstraint = MouseConstraint.create(engine, {
+  mouse: canvasmouse
+ })
+ World.add(world, mConstraint)
 }
 
 function draw() {
@@ -32,15 +47,16 @@ function keyPressed() {
 }
 
 function mousePressed() {
-  console.log(mouseX, mouseY)
-  refX = mouseX
-  refY = mouseY
+  refX = mConstraint.mouse.position.x
+  refY = mConstraint.mouse.position.y
 }
 
 function mouseReleased() {
-  longueur = getDistance(refX, refY, mouseX, mouseY)  
-  var theta = atan2(mouseY - refY, mouseX - refX);
-  let l = new Line(refX, refY, longueur, theta);
+  let actualX = mConstraint.mouse.position.x
+  let actualY = mConstraint.mouse.position.y
+  longueur = getDistance(refX, refY, actualX, actualY)  
+  var theta = atan2(actualY - refY, actualX - refX);
+  let l = new Line(refX, refY, longueur, theta, actualX, actualY);
   lines.push(l)
 }
 
