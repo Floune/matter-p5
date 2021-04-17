@@ -26,7 +26,6 @@ function setup() {
  
  ground = new Ground()
  ground.init()
- lines.push(ground)
 
  enableMouse()
  Engine.run(engine)
@@ -34,7 +33,7 @@ function setup() {
 
 function draw() {
   background(255);
-
+  ground.draw()
   text('f1: toggle legend', 10, 20);
   if( legend === true) {
     drawLegend()
@@ -61,6 +60,7 @@ function drawLegend() {
   text('space: spawn single ball', 10, 60);
   text('a: spawn chaos', 10, 80);
   text('u: undo', 10, 100);
+  text('r: reset', 10, 120);
 }
 
 function enableMouse() {
@@ -87,11 +87,22 @@ function keyPressed() {
     World.remove(world, toDelete.body)
   } else if (keyCode === 112) {
     legend = !legend
+  } else if (keyCode === 82) {
+    resetSketch()
   }
 
-
-
   console.log(keyCode)
+}
+
+function resetSketch() {
+  balls.forEach(toDelete => {
+    World.remove(world, toDelete.body)
+  })
+  lines.forEach(toDelete => {
+    World.remove(world, toDelete.body)
+  })
+  balls = []
+  lines = []
 }
 
 function mouseReleased() {
