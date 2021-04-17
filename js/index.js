@@ -61,6 +61,8 @@ function drawLegend() {
   text('a: spawn chaos', 10, 80);
   text('u: undo', 10, 100);
   text('r: reset', 10, 120);
+  text('b: reset balls', 10, 140);
+  text('b: reset lines', 10, 160);
 }
 
 function enableMouse() {
@@ -89,9 +91,27 @@ function keyPressed() {
     legend = !legend
   } else if (keyCode === 82) {
     resetSketch()
+  } else if (keyCode === 66) {
+    resetBalls()
+  } else if (keyCode === 76) {
+    resetLines()
   }
 
   console.log(keyCode)
+}
+
+function resetLines() {
+  lines.forEach(toDelete => {
+    World.remove(world, toDelete.body)
+  })
+  lines = []
+}
+
+function resetBalls() {
+  balls.forEach(toDelete => {
+    World.remove(world, toDelete.body)
+  })
+  balls = [];
 }
 
 function resetSketch() {
