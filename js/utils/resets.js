@@ -17,3 +17,10 @@ function resetSketch() {
   resetBalls()
 }
 
+function undou() {
+  if (lines.length > 0) {
+    let toDelete = lines.pop();
+    World.remove(world, toDelete.body);
+  }
+}
+

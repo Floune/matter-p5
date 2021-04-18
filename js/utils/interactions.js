@@ -26,8 +26,7 @@ function keyPressed() {
       break;
     // u
     case 85:
-      let toDelete = lines.pop();
-      World.remove(world, toDelete.body);
+      undou()
       break;
     // f1
     case 112:

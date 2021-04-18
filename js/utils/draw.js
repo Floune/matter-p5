@@ -4,7 +4,7 @@ function drawHUD() {
 
 	ground.draw()
 
-	legend === true ? drawLegend() : text('f1: toggle legend', 10, 20);
+	legend === true ? drawLegend() : text('f1: toggle help', 10, 20);
 
 }
 
@@ -23,6 +23,7 @@ function createLine() {
 function drawLegend() {
 	fill("black")
 	textSize(18)
+	text('f1: toggle help', 10, 20)
 	text('mouse: draw lines', 10, 40);
 	text('space: spawn single ball', 10, 60);
 	text('a: spawn chaos', 10, 80);
