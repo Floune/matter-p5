@@ -24,3 +24,12 @@ function undou() {
   }
 }
 
+function removeSelection() {
+  lines.forEach(line => {
+    if (line.selected === true) {
+      World.remove(world, line.body)
+      lines.splice(line.index, 1)
+    }
+  })
+}
+

@@ -1,5 +1,6 @@
 class Line {
-	constructor(x, y, w, t, ex, ey) {
+	constructor(x, y, w, t, ex, ey, i) {
+		this.index = i
 		this.x = x
 		this.y = y
 		this.w = w
@@ -8,6 +9,7 @@ class Line {
 		this.vx = ex - x
 		this.vy = ey - y
 		this.selected = false
+		this.rotating
 	}
 
 	init() {
@@ -30,7 +32,9 @@ class Line {
 	draw() {
 		let pos = this.body.position;
 		let angle = this.body.angle;
-		//Body.rotate(this.body, 0.05)
+		if (this.rotating === true) {
+			Body.rotate(this.body, 0.02)
+		}
 		push()
 		translate(pos.x, pos.y)
 		rectMode(CENTER)

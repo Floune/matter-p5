@@ -7,11 +7,11 @@ function enableMouse() {
 }
 
 function mousePressed() {
-  isShapeClicked()
-
   if (drawmode === true) {
     refX = mConstraint.mouse.position.x
     refY = mConstraint.mouse.position.y
+  } else {
+    isShapeClicked()
   }
 }
 
@@ -48,8 +48,23 @@ function keyPressed() {
     case 76:
       resetLines()
       break;
+    //s
+    case 83:
+      toogleRotation()
+      break;
+    // k
+    case 75:
+      removeSelection()
   }
 
+}
+
+function toogleRotation() {
+  lines.forEach(line => {
+    if (line.selected === true) {
+      line.rotating = !line.rotating
+    }
+  })
 }
 
 function toggleDraw() {
