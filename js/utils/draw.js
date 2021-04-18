@@ -30,6 +30,7 @@ function drawLegend() {
 	text('r: reset', 10, 120);
 	text('b: reset balls', 10, 140);
 	text('b: reset lines', 10, 160);
+	text('d: toogle draw mode', 10, 180);
 }
 
 function drawAssets() {

@@ -4,18 +4,21 @@ function enableMouse() {
   mConstraint = MouseConstraint.create(engine, {
     mouse: canvasmouse
   })
-  World.add(world, mConstraint)
+  //World.add(world, mConstraint)
 }
 
 function mousePressed() {
   isShapeClicked()
-  refX = mConstraint.mouse.position.x
-  refY = mConstraint.mouse.position.y
+
+  if (drawmode === true) {
+    refX = mConstraint.mouse.position.x
+    refY = mConstraint.mouse.position.y
+  }
 }
 
 function keyPressed() {
 
- // console.log(keyCode)
+ console.log(keyCode)
   let ki = keyCode
   switch(ki) {
     case 32:
@@ -30,12 +33,22 @@ function keyPressed() {
       break;
     case 82:
       resetSketch()
+      break;
     case 66:
       resetBalls()
+      break;
+    case 68:
+      toggleDraw()
+      break;
     case 76:
       resetLines()
+      break;
   }
 
+}
+
+function toggleDraw() {
+  drawmode = !drawmode
 }
 
 function mouseReleased() {

@@ -17,3 +17,4 @@ let Engine 			= Matter.Engine,
 let mConstraint;
 let refX, refY;
 let legend = false
+let drawmode = true
