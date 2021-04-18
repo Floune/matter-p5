@@ -5,7 +5,7 @@ function drawHUD() {
 	ground.draw()
 
 	legend === true ? drawLegend() : text('f1: toggle help', 10, 20);
-
+	drawInfos()
 }
 
 function createLine() {
@@ -22,7 +22,6 @@ function createLine() {
 
 function drawLegend() {
 	fill("black")
-	textSize(18)
 	text('f1: toggle help', 10, 20)
 	text('mouse: draw lines', 10, 40);
 	text('space: spawn single ball', 10, 60);
@@ -32,6 +31,12 @@ function drawLegend() {
 	text('b: reset balls', 10, 140);
 	text('b: reset lines', 10, 160);
 	text('d: toogle draw mode', 10, 180);
+}
+
+function drawInfos() {
+	text("balls: " + balls.length, 300, 20)
+	text("lines: " + lines.length, 400, 20)
+	text(drawmode === true ? "mode: draw" : "mode: interaction", 500, 20)
 }
 
 function drawAssets() {

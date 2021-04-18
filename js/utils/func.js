@@ -8,7 +8,6 @@ function isShapeClicked() {
     let vertx = verts.map(ver => { return ver.x }) 
     let verty = verts.map(ver => { return ver.y }) 
     if (eskeJeClicDansUnPolygone(nVert, vertx, verty, actualX, actualY) === true) {
-      console.log(line.body)
       line.selected = !line.selected
     }
   })

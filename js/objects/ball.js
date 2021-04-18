@@ -4,7 +4,12 @@ class Ball {
 		this.y = y;
 		this.r = 10
 		this.color = this.randomColor()
-		this.body = Bodies.circle(this.x, this.y, this.r)
+		this.body = Bodies.circle(this.x, this.y, this.r, {
+			density: 0.04,
+			friction: 0.03,
+			frictionAir: 0.00001,
+			restitution: 0.8,
+		})
 		Matter.Body.setMass(this.body, 16)
 		World.add(world, this.body)		
 	}
@@ -23,10 +28,10 @@ class Ball {
 	}
 
 	randomColor() {
-	  let r = random(255); 
-	  let g = random(255); 
-	  let b = random(255); 
-	  
-	  return color(r, g, b);
+		let r = random(255); 
+		let g = random(255); 
+		let b = random(255); 
+
+		return color(r, g, b);
 	}
 }
