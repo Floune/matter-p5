@@ -3,10 +3,11 @@ class Line {
 		this.x = x
 		this.y = y
 		this.w = w
-		this.h = 5
+		this.h = 10
 		this.t = t
 		this.vx = ex - x
 		this.vy = ey - y
+		this.selected = false
 	}
 
 	init() {
@@ -29,11 +30,13 @@ class Line {
 	draw() {
 		let pos = this.body.position;
 		let angle = this.body.angle;
+		//Body.rotate(this.body, 0.05)
 		push()
 		translate(pos.x, pos.y)
 		rectMode(CENTER)
 		fill("black")
-		stroke("black")
+		this.selected === true ? strokeWeight(3) : strokeWeight(1)
+		this.selected === true ? stroke("red") : stroke("black")
 		rotate(angle)
 		rect(0, 0, this.w, this.h)
 		pop()

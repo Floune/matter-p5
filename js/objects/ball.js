@@ -5,7 +5,7 @@ class Ball {
 		this.r = 10
 		this.color = this.randomColor()
 		this.body = Bodies.circle(this.x, this.y, this.r)
-		Matter.Body.setMass(this.body, 15)
+		Matter.Body.setMass(this.body, 16)
 		World.add(world, this.body)		
 	}
 	
