@@ -37,6 +37,8 @@ const buttons = document.getElementById('buttons')
 
 const triggers = [
 	{label:"help", action:"help", descr:"I need help"},
+	{label:"mode_edit", action:"mode", descr:"toogle mode"},
+	{label:"cached", action:"spin", descr:"spin selection"},
 	{label:"horizontal_rule", action:"barrier", descr:"barrier"},
 	{label:"circle", action:"circle", descr:"circle"},
 	{label:"crop_square", action:"square", descr:"square"},
@@ -46,8 +48,9 @@ const actions = {
 	help: () => {legend = !legend},
 	circle: () => {window.params.currentShape = "ball"},
 	square: () => {window.params.currentShape = "square";},
-	barrier: () => {window.params.currentShape = "barrier";}
-
+	barrier: () => {window.params.currentShape = "barrier";},
+	mode: () => {drawmode = !drawmode},
+	spin: () => {toogleRotation()},
 }
 
 
