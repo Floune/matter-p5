@@ -8,8 +8,7 @@ function enableMouse() {
 
 function mousePressed() {
   if (drawmode === true) {
-    refX = mConstraint.mouse.position.x
-    refY = mConstraint.mouse.position.y
+    handleDrawModeClic()
   } else {
     handleInteractionModeClic()
   }
@@ -17,7 +16,7 @@ function mousePressed() {
 
 function mouseReleased() {
   if (drawmode === true) {
-    createLine()
+   handleDrawModeRelease()
   } else {
     handleIneractionModeRelease()
   }
@@ -30,7 +29,7 @@ function keyPressed() {
  switch(ki) {
     // space
     case 32:
-      addShape()
+    addShape()
     break;
     // u
     case 85:
@@ -70,17 +69,37 @@ function keyPressed() {
 function handleInteractionModeClic() {
   deselectAll()
   selected = isShapeClicked()
-  if (selected !== false) {
-    selected.body.isStatic = false
-  }
 
 }
 
 function handleIneractionModeRelease() {
-  if (selected !== false) {
-    selected.body.isStatic = true
-  }
+
 }
+
+
+function handleDrawModeClic() {
+  let ki = window.params.currentShape
+  switch(ki) {
+    case "barrier":
+      refX = mConstraint.mouse.position.x
+      refY = mConstraint.mouse.position.y
+      break;
+    case "square":
+      addShape()
+      break
+    case "ball":
+      addShape()
+      break
+  }
+
+}
+
+function handleDrawModeRelease() {
+   if (window.params.currentShape === "barrier") {
+      createLine()
+    }
+}
+
 
 function deselectAll() {
   lines.forEach(line => {

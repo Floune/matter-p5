@@ -8,8 +8,8 @@ const controls = [
 	{name:'b-frictionAir', key: 'frictionAir', category:'ball' , min:0.00001, max: 1, step: 0.005, defaultValue: 0.00001},
 	{name:'b-restitution', key: 'restitution', category:'ball' , min:0.1, max: 1, step: 0.1, defaultValue: 0.8},
 	{name:'s-density', key: 'density', category:'square', min:0, max: 1, step: 0.001, defaultValue: 0.005},
-	{name:'s-width', key: 'w', category:'square' , min:1, max: 100, step: 1, defaultValue: 10},
-	{name:'s-height', key: 'h', category:'square' , min:1, max: 100, step: 1, defaultValue: 10},
+	{name:'s-width', key: 'w', category:'square' , min:1, max: 300, step: 1, defaultValue: 10},
+	{name:'s-height', key: 'h', category:'square' , min:1, max: 300, step: 1, defaultValue: 10},
 	{name:'s-friction', key: 'friction', category:'square' , min:0.01, max: 1, step: 0.01, defaultValue: 0.01},
 	{name:'s-frictionAir', key: 'frictionAir', category:'square' , min:0.00001, max: 1, step: 0.005, defaultValue: 0.00001},
 	{name:'s-restitution', key: 'restitution', category:'square' , min:0.1, max: 1, step: 0.1, defaultValue: 0.8},
@@ -37,6 +37,7 @@ const buttons = document.getElementById('buttons')
 
 const triggers = [
 	{label:"help", action:"help", descr:"I need help"},
+	{label:"horizontal_rule", action:"barrier", descr:"barrier"},
 	{label:"circle", action:"circle", descr:"circle"},
 	{label:"crop_square", action:"square", descr:"square"},
 ]
@@ -44,7 +45,8 @@ const triggers = [
 const actions = {
 	help: () => {legend = !legend},
 	circle: () => {window.params.currentShape = "ball"},
-	square: () => {window.params.currentShape = "square";}
+	square: () => {window.params.currentShape = "square";},
+	barrier: () => {window.params.currentShape = "barrier";}
 
 }
 

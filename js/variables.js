@@ -17,7 +17,7 @@ Body 			= Matter.Body
 let mConstraint;
 let refX, refY;
 let legend = false
-let drawmode = false
+let drawmode = true
 let selected;
 
 window.params = {
