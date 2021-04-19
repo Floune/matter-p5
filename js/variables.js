@@ -17,5 +17,15 @@ let Engine 			= Matter.Engine,
 let mConstraint;
 let refX, refY;
 let legend = false
-let drawmode = true
+let drawmode = false
 let selected;
+
+window.params = {
+	ball: {
+		density: 0.05,
+		friction: 0.01,
+		frictionAir: 0.00001,
+		restitution: 0.8,
+		r: 10,
+	}
+}

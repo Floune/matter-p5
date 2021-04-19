@@ -1,5 +1,5 @@
 function setup() {
-  canvas = createCanvas(window.innerWidth - 40, window.innerHeight); 
+  canvas = createCanvas(window.innerWidth, window.innerHeight); 
 
   engine = Engine.create();
   world = engine.world

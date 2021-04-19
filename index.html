@@ -26,9 +26,51 @@
 		canvas {
 			border: 2px solid black;
 		}
+		#controls {
+			position: fixed;
+			top: 0;
+			right: 0;
+			outline: 1px solid pink;
+		}
+		#controls>div {
+		}
+
+		#controls label {
+			width: 80px;
+			letter-spacing: -1px;
+			display: inline-block;
+		}
+		#controls input {
+			
+		}
+		#controls span {
+						width: 80px;
+			letter-spacing: -1px;
+			display: inline-block;
+		}
+
+		#buttons {
+			position: fixed;
+			left:0;
+			top: 0;
+
+		}
+		#buttons button {
+			display: block;
+			width: 35px;
+			height: 35px;
+			background-color: transparent;
+		}
+		#buttons button:hover {
+			background-color: #ccc;
+		}
 	</style>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 <body>
+	<div id="controls"></div>
+	<div id="buttons"></div>
+
 	<script src="./js/variables.js"></script>
 	<script src="./js/index.js"></script>
 	<script src="./js/utils/func.js"></script>
@@ -38,5 +80,7 @@
 	<script src="./js/objects/ball.js"></script>
 	<script src="./js/objects/ground.js"></script>
 	<script src="./js/objects/line.js"></script>
+	<script src="./js/utils/controls.js"></script>
+
 </body>
 </html>
