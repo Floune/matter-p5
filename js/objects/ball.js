@@ -10,7 +10,6 @@ class Ball {
 			frictionAir: 0.00001,
 			restitution: 0.8,
 		})
-		Matter.Body.setMass(this.body, 16)
 		World.add(world, this.body)		
 	}
 	
@@ -23,7 +22,7 @@ class Ball {
 		rectMode(CENTER)
 		fill(this.color)
 		stroke("black")
-		ellipse(0, 0, this.r)
+		ellipse(0, 0, this.r * 1.8)
 		pop()
 	}
 
