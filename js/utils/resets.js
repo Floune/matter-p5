@@ -24,6 +24,15 @@ function undou() {
   }
 }
 
+function undouGhost() {
+  if (lines.length > 0) {
+    let toDelete = lines[lines.length - 1];
+    if (toDelete.index = "x") {
+      lines.pop()
+    }
+  }
+}
+
 function removeSelection() {
   if (selected!== false) {
     World.remove(world, selected.body)

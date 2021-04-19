@@ -14,7 +14,7 @@ function createLine() {
 
 	longueur = getDistance(refX, refY, actualX, actualY)  
 	var theta = atan2(actualY - refY, actualX - refX);
-
+	
 	let l = new Line(refX, refY, longueur, theta, actualX, actualY, lines.length);
 	l.init()
 	lines.push(l)
@@ -50,7 +50,19 @@ function drawAssets() {
 	});
 }
 
-function toggleBorders() {
-	let left = new leftWall()
-	left.init()
+
+function handleBarrier() {
+	refX = mConstraint.mouse.position.x
+	refY = mConstraint.mouse.position.y
+	
+	let actualX = mConstraint.mouse.position.x
+	let actualY = mConstraint.mouse.position.y
+
+	longueur = getDistance(refX, refY, actualX, actualY)  
+	var theta = atan2(actualY - refY, actualX - refX);
+
+	let l = new Ghostline(refX, refY, longueur, theta, actualX, actualY, "x");
+	l.init()
+	lines.push(l)
+
 }

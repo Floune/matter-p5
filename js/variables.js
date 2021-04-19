@@ -1,11 +1,12 @@
 let balls = [];
 let lines = [];
+let curves = [];
 
 let canvas;
 let engine;
 let world;
 
-let Engine 			= Matter.Engine,
+let Engine 		= Matter.Engine,
 World 			= Matter.World,
 Bodies 			= Matter.Bodies,
 Constraint 		= Matter.Constraint,

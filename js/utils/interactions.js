@@ -16,8 +16,21 @@ function mousePressed() {
 
 function mouseReleased() {
   if (drawmode === true) {
-   handleDrawModeRelease()
- }
+    handleDrawModeRelease()
+  }
+}
+
+function mouseDragged() {
+  if (drawmode === true && window.params.currentShape === "barrier") {
+    let ghost = lines[lines.length - 1]
+    let actualX = mConstraint.mouse.position.x
+    let actualY = mConstraint.mouse.position.y
+
+    longueur = getDistance(refX, refY, actualX, actualY)  
+    var theta = atan2(actualY - refY, actualX - refX);
+
+    ghost.update(refX, refY, longueur, theta, actualX, actualY)
+  }
 }
 
 function keyPressed() {
@@ -77,8 +90,7 @@ function handleDrawModeClic() {
     let ki = window.params.currentShape
     switch(ki) {
       case "barrier":
-      refX = mConstraint.mouse.position.x
-      refY = mConstraint.mouse.position.y
+      handleBarrier()
       break;
       case "square":
       addShape()
@@ -91,7 +103,8 @@ function handleDrawModeClic() {
 }
 
 function handleDrawModeRelease() {
-  if (window.params.currentShape === "barrier" && isNotInToolbar()) {
+  if (drawmode === true && window.params.currentShape === "barrier" && isNotInToolbar()) {
+    undouGhost()
     createLine()
   }
 }
