@@ -4,7 +4,7 @@ class Ball {
 		this.x = x;
 		this.y = y;
 		this.r = r
-		this.color = this.randomColor()
+		this.color = randomColor()
 		this.body = Bodies.circle(this.x, this.y, this.r, ballParams)
 		World.add(world, this.body)		
 	}
@@ -22,11 +22,4 @@ class Ball {
 		pop()
 	}
 
-	randomColor() {
-		let r = random(255); 
-		let g = random(255); 
-		let b = random(255); 
-
-		return color(r, g, b);
-	}
 }

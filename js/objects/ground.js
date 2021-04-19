@@ -1,9 +1,9 @@
 
 class Ground {
 	constructor() {
-		this.h = 1
+		this.h = 50
 		this.x = 0
-		this.y = height - this.h
+		this.y = window.innerHeight
 		this.w = window.innerWidth
 		this.vx = window.innerWidth - this.x
 		this.vy = window.innerHeight - this.y

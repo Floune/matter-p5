@@ -31,10 +31,15 @@ const buttons = document.getElementById('buttons')
 
 const triggers = [
 	{label:"help", action:"help", descr:"I need help"},
+	{label:"lens", action:"circle", descr:"circle"},
+	{label:"crop_square", action:"square", descr:"square"},
 ]
 
 const actions = {
-	help: () => {debugger;legend = !legend}
+	help: () => {legend = !legend},
+	circle: () => {window.params.currentShape = "ball"},
+	square: () => {window.params.currentShape = "square";}
+
 }
 
 

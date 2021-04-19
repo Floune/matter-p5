@@ -30,7 +30,7 @@ function keyPressed() {
  switch(ki) {
     // space
     case 32:
-    balls.push(new Ball(mouseX, mouseY));
+      addShape()
     break;
     // u
     case 85:
@@ -111,8 +111,17 @@ function handleLoopInteractions() {
 
   if (keyIsPressed === true) {
     if (keyCode === 65) {
-      balls.push(new Ball(mouseX, mouseY));
+      addShape()
     }
   }
 
+}
+
+function addShape() {
+  if (window.params.currentShape === "ball") {
+    balls.push(new Ball(mouseX, mouseY));
+  }
+  if (window.params.currentShape === "square") {
+    balls.push(new Square(mouseX, mouseY));
+  }
 }
