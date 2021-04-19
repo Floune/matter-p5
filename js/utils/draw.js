@@ -49,3 +49,8 @@ function drawAssets() {
 		balle.draw()
 	});
 }
+
+function toggleBorders() {
+	let left = new leftWall()
+	left.init()
+}

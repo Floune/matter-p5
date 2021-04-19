@@ -1,9 +1,9 @@
 class Ball {
 	constructor(x, y) {
-		const {r, ...ballParams} = window.params.ball
+		const ballParams = window.params.pparams
 		this.x = x;
 		this.y = y;
-		this.r = r
+		this.r = window.params.ball.r
 		this.color = randomColor()
 		this.body = Bodies.circle(this.x, this.y, this.r, ballParams)
 		World.add(world, this.body)		

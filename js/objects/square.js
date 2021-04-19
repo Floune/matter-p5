@@ -1,10 +1,10 @@
 class Square {
 	constructor(x, y) {
-		const {w, h, ...squareParams} = window.params.square
+		const squareParams = window.params.pparams
 		this.x = x,
 		this.y = y,
-		this.w = w
-		this.h = h
+		this.w = window.params.square.w
+		this.h = window.params.square.h
 		this.body = Bodies.rectangle(this.x, this.y, this.w, this.h, squareParams)
 		World.add(world, this.body)
 	}

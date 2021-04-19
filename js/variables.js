@@ -22,19 +22,17 @@ let selected;
 
 window.params = {
 	currentShape: "ball",
-	ball: {
+	pparams: {
 		density: 0.05,
 		friction: 0.01,
 		frictionAir: 0.00001,
 		restitution: 0.8,
+	},
+	ball: {
 		r: 10,
 	},
 	square: {
 		w: 50,
 		h: 50,
-		density: 0.05,
-		friction: 0.01,
-		frictionAir: 0.00001,
-		restitution: 0.8,
 	},
 }

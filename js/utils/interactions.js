@@ -17,9 +17,7 @@ function mousePressed() {
 function mouseReleased() {
   if (drawmode === true) {
    handleDrawModeRelease()
- } else {
-  handleIneractionModeRelease()
-}
+ }
 }
 
 function keyPressed() {
@@ -75,26 +73,27 @@ function handleInteractionModeClic() {
 
 
 function handleDrawModeClic() {
-  let ki = window.params.currentShape
-  switch(ki) {
-    case "barrier":
-    refX = mConstraint.mouse.position.x
-    refY = mConstraint.mouse.position.y
-    break;
-    case "square":
-    addShape()
-    break
-    case "ball":
-    addShape()
-    break
+  if (isNotInToolbar() === true) {
+    let ki = window.params.currentShape
+    switch(ki) {
+      case "barrier":
+      refX = mConstraint.mouse.position.x
+      refY = mConstraint.mouse.position.y
+      break;
+      case "square":
+      addShape()
+      break
+      case "ball":
+      addShape()
+      break
+    }
   }
-
 }
 
 function handleDrawModeRelease() {
- if (window.params.currentShape === "barrier") {
-  createLine()
-}
+  if (window.params.currentShape === "barrier" && isNotInToolbar()) {
+    createLine()
+  }
 }
 
 
