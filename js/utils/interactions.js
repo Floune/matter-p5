@@ -11,52 +11,81 @@ function mousePressed() {
     refX = mConstraint.mouse.position.x
     refY = mConstraint.mouse.position.y
   } else {
-    isShapeClicked()
+    handleInteractionModeClic()
+  }
+}
+
+function mouseReleased() {
+  if (drawmode === true) {
+    createLine()
+  } else {
+    handleIneractionModeRelease()
   }
 }
 
 function keyPressed() {
 
  console.log(keyCode)
-  let ki = keyCode
-  switch(ki) {
+ let ki = keyCode
+ switch(ki) {
     // space
     case 32:
-      balls.push(new Ball(mouseX, mouseY));
-      break;
+    balls.push(new Ball(mouseX, mouseY));
+    break;
     // u
     case 85:
-      undou()
-      break;
+    undou()
+    break;
     // f1
     case 112:
-      legend = !legend
-      break;
+    legend = !legend
+    break;
     // r
     case 82:
-      resetSketch()
-      break;
+    resetSketch()
+    break;
     // b
     case 66:
-      resetBalls()
-      break;
+    resetBalls()
+    break;
     // d
     case 68:
-      toggleDraw()
-      break;
+    toggleDraw()
+    break;
     // l
     case 76:
-      resetLines()
-      break;
+    resetLines()
+    break;
     //s
     case 83:
-      toogleRotation()
-      break;
+    toogleRotation()
+    break;
     // k
     case 75:
-      removeSelection()
+    removeSelection()
   }
 
+}
+
+function handleInteractionModeClic() {
+  deselectAll()
+  selected = isShapeClicked()
+  if (selected !== false) {
+    selected.body.isStatic = false
+  }
+
+}
+
+function handleIneractionModeRelease() {
+  if (selected !== false) {
+    selected.body.isStatic = true
+  }
+}
+
+function deselectAll() {
+  lines.forEach(line => {
+    line.selected = false;
+  })
 }
 
 function toogleRotation() {
@@ -76,11 +105,7 @@ function toggleDraw() {
   }
 }
 
-function mouseReleased() {
-  if (drawmode === true) {
-    createLine()
-  }
-}
+
 
 function handleLoopInteractions() {
 

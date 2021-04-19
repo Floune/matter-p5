@@ -15,9 +15,11 @@ function createLine() {
 	longueur = getDistance(refX, refY, actualX, actualY)  
 	var theta = atan2(actualY - refY, actualX - refX);
 
-	let l = new Line(refX, refY, longueur, theta, actualX, actualY);
+	let l = new Line(refX, refY, longueur, theta, actualX, actualY, lines.length);
 	l.init()
 	lines.push(l)
+  console.log(lines)
+
 }
 
 function drawLegend() {
@@ -32,6 +34,7 @@ function drawLegend() {
 	text('b: reset lines', 10, 160);
 	text('d: change mode', 10, 180);
 	text('s: spin selection', 10, 200);
+	text('k: delete selection', 10, 220);
 }
 
 function drawInfos() {

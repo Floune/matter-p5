@@ -6,7 +6,7 @@ class Ball {
 		this.color = this.randomColor()
 		this.body = Bodies.circle(this.x, this.y, this.r, {
 			density: 0.04,
-			friction: 0.03,
+			friction: 0.01,
 			frictionAir: 0.00001,
 			restitution: 0.8,
 		})

@@ -25,11 +25,23 @@ function undou() {
 }
 
 function removeSelection() {
-  lines.forEach(line => {
-    if (line.selected === true) {
-      World.remove(world, line.body)
-      lines.splice(line.index, 1)
+  if (selected!== false) {
+    World.remove(world, selected.body)
+    let index = extractSelectedIndex()
+    lines.splice(index, 1)
+    selected = false
+  }
+}
+
+function extractSelectedIndex() {
+  let i = 0;
+  let ret;
+  while (i < lines.length) {
+    if (selected.index === lines[i].index) {
+      ret = i
     }
-  })
+    i++;
+  }
+  return ret;
 }
 

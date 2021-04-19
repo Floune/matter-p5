@@ -18,3 +18,4 @@ let mConstraint;
 let refX, refY;
 let legend = false
 let drawmode = true
+let selected;

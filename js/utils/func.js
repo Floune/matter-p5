@@ -1,16 +1,22 @@
 function isShapeClicked() {
-
+  let clicked = false;
+  let i = 0;
+  let found = false;
   let actualX = mConstraint.mouse.position.x
   let actualY = mConstraint.mouse.position.y
-  lines.forEach(line => {
-    let verts = line.body.vertices
+  while(i < lines.length) {
+    let verts = lines[i].body.vertices
     let nVert = verts.length
     let vertx = verts.map(ver => { return ver.x }) 
     let verty = verts.map(ver => { return ver.y }) 
     if (eskeJeClicDansUnPolygone(nVert, vertx, verty, actualX, actualY) === true) {
-      line.selected = !line.selected
+      clicked = lines[i];
+      lines[i].selected = !lines[i].selected 
+      found = true
     }
-  })
+    i++
+  }
+  return clicked;
 }
 
 function getDistance(x1, y1, x2, y2) {
