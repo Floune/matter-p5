@@ -1,6 +1,6 @@
-let balls = [];
-let lines = [];
-let curves = [];
+let balls 		= [];
+let lines 		= [];
+let curves 		= [];
 
 let canvas;
 let engine;
@@ -9,6 +9,7 @@ let world;
 let Engine 		= Matter.Engine,
 World 			= Matter.World,
 Bodies 			= Matter.Bodies,
+Vertices		= Matter.Vertices,
 Constraint 		= Matter.Constraint,
 Vector 			= Matter.Vector,
 Mouse 			= Matter.Mouse,
@@ -17,8 +18,8 @@ Body 			= Matter.Body
 
 let mConstraint;
 let refX, refY;
-let legend = false
-let drawmode = true
+let legend 		= false
+let drawmode 	= true
 let selected;
 
 window.params = {

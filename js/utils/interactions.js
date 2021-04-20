@@ -40,39 +40,40 @@ function keyPressed() {
  switch(ki) {
     // space
     case 32:
-    addShape()
-    break;
+      addShape()
+      break;
     // u
     case 85:
-    undou()
-    break;
+      undou()
+      break;
     // f1
     case 112:
-    legend = !legend
-    break;
+      legend = !legend
+      break;
     // r
     case 82:
-    resetSketch()
-    break;
+      resetSketch()
+      break;
     // b
     case 66:
-    resetBalls()
-    break;
+      resetBalls()
+      break;
     // d
     case 68:
-    toggleDraw()
-    break;
+      toggleDraw()
+      break;
     // l
     case 76:
-    resetLines()
-    break;
+      resetLines()
+      break;
     //s
     case 83:
-    toogleRotation()
-    break;
+      toogleRotation()
+      break;
     // k
     case 75:
-    removeSelection()
+      removeSelection()
+      break;
   }
 
 }

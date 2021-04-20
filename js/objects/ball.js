@@ -8,6 +8,14 @@ class Ball {
 		this.body = Bodies.circle(this.x, this.y, this.r, ballParams)
 		World.add(world, this.body)		
 	}
+
+	isOffScreen() { 
+		return this.body.position.y > height + 200 
+	}
+
+	seppuku() {
+		World.remove(world, this.body)
+	}
 	
 	draw() {
 		let pos = this.body.position;

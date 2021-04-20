@@ -41,15 +41,20 @@ function drawInfos() {
 }
 
 function drawAssets() {
-	lines.forEach(line => {
-		line.draw()
-	})
 
-	balls.forEach(balle => {
-		balle.draw()
-	});
+	for (i = 0; i < lines.length; i++) {
+		lines[i].draw()
+	}
+
+	for (i = 0; i < balls.length; i++) {
+		balls[i].draw()
+		if (balls[i].isOffScreen()) {
+			balls[i].seppuku();
+			balls.splice(i, 1)
+			i--; // sinon on saute des boulesw
+		}
+	}
 }
-
 
 function handleBarrier() {
 	refX = mConstraint.mouse.position.x

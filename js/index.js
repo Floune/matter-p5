@@ -8,12 +8,12 @@ function setup() {
   ground.init()
 
   enableMouse()
-  Engine.run(engine)
+
 }
 
 function draw() {
-
   drawHUD()
+  Engine.update(engine)
 
   handleLoopInteractions()
   
