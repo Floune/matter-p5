@@ -2,10 +2,10 @@
 const ui = document.getElementById('controls')
 
 const controls = [
-	{name:'density', key: 'density', category:'ball', min:0, max: 1, step: 0.001, defaultValue: 0.005},
-	{name:'friction', key: 'friction', category:'ball' , min:0.01, max: 1, step: 0.01, defaultValue: 0.01},
-	{name:'frictionAir', key: 'frictionAir', category:'ball' , min:0.00001, max: 1, step: 0.005, defaultValue: 0.00001},
-	{name:'restitution', key: 'restitution', category:'ball' , min:0.1, max: 1, step: 0.1, defaultValue: 0.8},
+	{name:'density', key: 'density', category:'pparams', min:0, max: 1, step: 0.001, defaultValue: 0.005},
+	{name:'friction', key: 'friction', category:'pparams' , min:0.01, max: 1, step: 0.01, defaultValue: 0.01},
+	{name:'frictionAir', key: 'frictionAir', category:'pparams' , min:0.00001, max: 1, step: 0.005, defaultValue: 0.00001},
+	{name:'restitution', key: 'restitution', category:'pparams' , min:0.1, max: 1, step: 0.1, defaultValue: 0.8},
 	{name:'circle radius', key: 'r', category:'ball' , min:1, max: 100, step: 1, defaultValue: 10},
 	{name:'rect-width', key: 'w', category:'square' , min:1, max: 300, step: 1, defaultValue: 10},
 	{name:'rect-height', key: 'h', category:'square' , min:1, max: 300, step: 1, defaultValue: 10},
