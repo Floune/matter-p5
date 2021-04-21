@@ -1,20 +1,12 @@
-class Ball {
-	constructor(x, y) {
+class Ball extends Base {
+	constructor(x, y, index) {
+		super(x, y, index)
 		const ballParams = window.params.pparams
-		this.x = x;
-		this.y = y;
 		this.r = window.params.ball.r
 		this.color = randomColor()
 		this.body = Bodies.circle(this.x, this.y, this.r, ballParams)
-		World.add(world, this.body)		
-	}
-
-	isOffScreen() { 
-		return this.body.position.y > height + 200 
-	}
-
-	seppuku() {
-		World.remove(world, this.body)
+		this.body.isStatic = !gravity
+		World.add(world, this.body)
 	}
 	
 	draw() {

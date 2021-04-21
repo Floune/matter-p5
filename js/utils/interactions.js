@@ -68,7 +68,7 @@ function keyPressed() {
       break;
     //s
     case 83:
-      toogleRotation()
+      toggleRotation()
       break;
     // k
     case 75:
@@ -117,10 +117,10 @@ function deselectAll() {
   })
 }
 
-function toogleRotation() {
+function toggleRotation() {
   lines.forEach(line => {
     if (line.selected === true) {
-      line.rotating = !line.rotating
+      line.handleRot()
     }
   })
 }
@@ -143,10 +143,11 @@ function handleLoopInteractions() {
 }
 
 function addShape() {
+  let l = balls.length
   if (window.params.currentShape === "ball") {
-    balls.push(new Ball(mouseX, mouseY));
+    balls.push(new Ball(mouseX, mouseY, l));
   }
   if (window.params.currentShape === "square") {
-    balls.push(new Square(mouseX, mouseY));
+    balls.push(new Square(mouseX, mouseY, l));
   }
 }

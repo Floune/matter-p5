@@ -38,4 +38,6 @@ function isNotInToolbar() {
   return mConstraint.mouse.position.x > 81
 }
 
-
+function toggleGravity() {
+  gravity = !gravity
+}

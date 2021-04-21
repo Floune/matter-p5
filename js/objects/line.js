@@ -9,7 +9,20 @@ class Line {
 		this.vx = ex - x
 		this.vy = ey - y
 		this.selected = false
-		this.rotating
+		this.rot = 0
+	}
+
+	handleRot() {
+		if(this.rot === 0) {
+			this.rot = 0.01
+		}
+		else if(this.rot === 0.01) {
+			this.rot = -0.01
+		}
+		else if(this.rot === -0.01) {
+			this.rot = 0
+		}
+
 	}
 
 	init() {
@@ -19,6 +32,7 @@ class Line {
 
 	createBody() {
 		this.body = Bodies.rectangle(this.x, this.y, this.w, this.h)
+		this.body.isStatic = !gravity
 		World.add(world, this.body)
 		this.body.isStatic = true		
 	}
@@ -30,11 +44,9 @@ class Line {
 	}
 
 	draw() {
+		Body.rotate(this.body, this.rot)
 		let pos = this.body.position;
 		let angle = this.body.angle;
-		if (this.rotating === true) {
-			Body.rotate(this.body, 0.02)
-		}
 		push()
 		translate(pos.x, pos.y)
 		rectMode(CENTER)

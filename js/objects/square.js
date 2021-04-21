@@ -1,11 +1,11 @@
-class Square {
-	constructor(x, y) {
+class Square extends Base {
+	constructor (x, y, index) {
+		super(x, y, index)
 		const squareParams = window.params.pparams
-		this.x = x,
-		this.y = y,
 		this.w = window.params.square.w
 		this.h = window.params.square.h
 		this.body = Bodies.rectangle(this.x, this.y, this.w, this.h, squareParams)
+		this.body.isStatic = !gravity
 		World.add(world, this.body)
 	}
 

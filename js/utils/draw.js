@@ -37,7 +37,8 @@ function drawLegend() {
 function drawInfos() {
 	text("balls: " + balls.length, 300, 20)
 	text("lines: " + lines.length, 400, 20)
-	text(drawmode === true ? "mode: draw" : "mode: interaction", 500, 20)
+	text(gravity === true ? "gravity mode" : "static mode" + lines.length, 500, 20)
+	text(drawmode === true ? "mode: draw" : "mode: interaction", 600, 20)
 }
 
 function drawAssets() {

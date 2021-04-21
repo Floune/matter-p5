@@ -21,6 +21,7 @@ let refX, refY;
 let legend 		= false
 let drawmode 	= true
 let selected;
+let gravity = true
 
 window.params = {
 	currentShape: "ball",
