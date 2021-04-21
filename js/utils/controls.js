@@ -44,7 +44,7 @@ const actions = {
 	circle: () => {window.params.currentShape = "ball"},
 	square: () => {window.params.currentShape = "square";},
 	barrier: () => {window.params.currentShape = "barrier";},
-	mode: () => {drawmode = !drawmode},
+	mode: () => {toggleDraw()},
 	spin: () => {toogleRotation()},
 }
 

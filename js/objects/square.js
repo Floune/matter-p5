@@ -9,6 +9,14 @@ class Square {
 		World.add(world, this.body)
 	}
 
+	isOffScreen() {
+		return this.body.position.y > height + 200
+	}
+
+	seppuku() {
+		World.remove(world, this.body)
+	}
+
 	draw() {
 		let pos = this.body.position;
 		let angle = this.body.angle;

@@ -6,8 +6,9 @@ function setup() {
 
   ground = new Ground()
   ground.init()
-
   enableMouse()
+
+  World.add(world, mConstraint)
 
 }
 

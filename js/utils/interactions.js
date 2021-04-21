@@ -127,11 +127,7 @@ function toogleRotation() {
 
 function toggleDraw() {
   drawmode = !drawmode
-  if (drawmode == false) {
-    World.add(world, mConstraint)
-  } else {
-    World.remove(world, mConstraint)
-  }
+  document.body.classList.contains("interaction") ? document.body.classList.remove("interaction") : document.body.classList.add("interaction")
 }
 
 
