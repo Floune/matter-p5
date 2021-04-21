@@ -7,7 +7,7 @@ function enableMouse() {
 }
 
 function mousePressed() {
-  if (drawmode === true) {
+  if (drawmode === true && isNotInToolbar() && isNotInParams()) {
     handleDrawModeClic()
   } else {
     handleInteractionModeClic()
@@ -81,14 +81,20 @@ function keyPressed() {
    case 71:
      toggleGravity()
      break;
+   case 69:
+     linkSelection()
+     break;
   }
 
 }
 
 function handleInteractionModeClic() {
   if (isNotInToolbar() === true) {
-    deselectAll()
     selected = isShapeClicked()
+    if (selected === false) {
+      console.log(selected)
+      deselectAll()
+    }
   }
 }
 

@@ -36,6 +36,7 @@ const triggers = [
 	{label:"locked", action:"gravity", descr:"gravity"},
 	{label:"calendar_view_month", action:"grid", descr:"toggle grid"},
 	{label:"cached", action:"spin", descr:"spin selection"},
+	{label:"share", action:"link", descr:"link shapes"},
 	{label:"horizontal_rule", action:"barrier", descr:"barrier"},
 	{label:"circle", action:"circle", descr:"circle"},
 	{label:"panorama_wide_angle_select", action:"square", descr:"square"},
@@ -49,7 +50,8 @@ const actions = {
 	mode: () => {toggleDraw()},
 	spin: () => {toggleRotation()},
 	gravity: () => {toggleGravity()},
-	grid: () => {toggleGrid()}
+	grid: () => {toggleGrid()},
+	link: () => {linkSelection()}
 }
 
 

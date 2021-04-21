@@ -55,6 +55,7 @@ function extractSelectedIndex() {
 }
 
 function deselectAll() {
+  selected = null;
   lines.forEach(line => {
     line.selected = false;
   })

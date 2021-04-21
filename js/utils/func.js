@@ -35,9 +35,15 @@ function randomColor() {
 }
 
 function isNotInToolbar() {
-  return mConstraint.mouse.position.x > 36
+  return mConstraint.mouse.position.x > 40
 }
 
+function isNotInParams() {
+  let b = document.getElementById("controls");
+  let w = b.clientWidth;
+  let h = b.clientHeight;
+  return !(mConstraint.mouse.position.x > width - w && mConstraint.mouse.position.y < h)
+}
 
 function addShape() {
   let l = balls.length

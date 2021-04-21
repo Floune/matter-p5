@@ -10,6 +10,8 @@ Constraint 		= Matter.Constraint,
 Vector 			= Matter.Vector,
 Mouse 			= Matter.Mouse,
 MouseConstraint = Matter.MouseConstraint,
+Composites		= Matter.Composites,
+Composite		= Matter.Composite,
 Body 			= Matter.Body
 
 let canvas;
@@ -22,7 +24,9 @@ let legend 		= false
 let drawmode 	= true
 let gravity 	= true
 let gridMode	= false
-let gridGap	= 50;
+let linkMode	= false
+let links 		= []
+let gridGap		= 50;
 
 window.params = {
 	currentShape: "ball",
