@@ -26,6 +26,11 @@
 		.interaction {
 			cursor: grab;
 		}
+
+		.grabbing {
+			cursor: grabbing;
+		}
+
 		canvas {
 			border: 2px solid black;
 		}
@@ -33,6 +38,7 @@
 			position: fixed;
 			top: 0;
 			right: 0;
+			background-color: white;
 		}
 		#controls>div {
 		}
@@ -61,7 +67,7 @@
 			display: block;
 			width: 35px;
 			height: 35px;
-			background-color: transparent;
+			background-color: white;
 		}
 		#buttons button:hover {
 			background-color: #ccc;
@@ -78,6 +84,7 @@
 
 	<script src="./js/variables.js"></script>
 	<script src="./js/index.js"></script>
+	<script src="./js/utils/toggles.js"></script>
 	<script src="./js/utils/func.js"></script>
 	<script src="./js/utils/interactions.js"></script>
 	<script src="./js/utils/resets.js"></script>

@@ -1,6 +1,7 @@
 function drawHUD() {
 
 	background(255);
+	if (gridMode === true) {drawGrid()}
 
 	ground.draw()
 
@@ -29,15 +30,17 @@ function drawLegend() {
 	text('r: reset', 45, 100);
 	text('b: reset balls', 45, 120);
 	text('b: reset lines', 45, 140);
-	text('d: change mode', 45, 160);
+	text('k: delete selection', 45, 160);
 	text('s: spin selection', 45, 180);
-	text('k: delete selection', 45, 200);
+	text('d: toggle mode', 45, 200);
+	text('g: toggle gravity', 45, 220);
+	text('z: toggle grid', 45, 240);
 }
 
 function drawInfos() {
 	text("balls: " + balls.length, 300, 20)
 	text("lines: " + lines.length, 400, 20)
-	text(gravity === true ? "gravity mode" : "static mode" + lines.length, 500, 20)
+	text(gravity === true ? "gravity" : "static", 500, 20)
 	text(drawmode === true ? "mode: draw" : "mode: interaction", 600, 20)
 }
 
@@ -70,5 +73,15 @@ function handleBarrier() {
 	let l = new Ghostline(refX, refY, longueur, theta, actualX, actualY, "x");
 	l.init()
 	lines.push(l)
+}
 
+function drawGrid() {
+	let u = 0
+	stroke("grey")
+	strokeWeight(1)
+	while(u < window.innerWidth) {
+		line(0, u, width, u)
+		line(u, 0, u, height)
+		u += gridGap
+	}
 }

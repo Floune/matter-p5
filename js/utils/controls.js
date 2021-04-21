@@ -2,7 +2,7 @@
 const ui = document.getElementById('controls')
 
 const controls = [
-	{name:'density', key: 'density', category:'pparams', min:0, max: 1, step: 0.001, defaultValue: 0.005},
+	{name:'density', key: 'density', category:'pparams', min:0, max: 0.01, step: 0.001, defaultValue: 0.001},
 	{name:'friction', key: 'friction', category:'pparams' , min:0.01, max: 1, step: 0.01, defaultValue: 0.01},
 	{name:'frictionAir', key: 'frictionAir', category:'pparams' , min:0.00001, max: 1, step: 0.005, defaultValue: 0.00001},
 	{name:'restitution', key: 'restitution', category:'pparams' , min:0.1, max: 1, step: 0.1, defaultValue: 0.8},
@@ -34,6 +34,7 @@ const triggers = [
 	{label:"help", action:"help", descr:"I need help"},
 	{label:"mode_edit", action:"mode", descr:"toogle mode"},
 	{label:"locked", action:"gravity", descr:"gravity"},
+	{label:"calendar_view_month", action:"grid", descr:"toggle grid"},
 	{label:"cached", action:"spin", descr:"spin selection"},
 	{label:"horizontal_rule", action:"barrier", descr:"barrier"},
 	{label:"circle", action:"circle", descr:"circle"},
@@ -47,7 +48,8 @@ const actions = {
 	barrier: () => {window.params.currentShape = "barrier";},
 	mode: () => {toggleDraw()},
 	spin: () => {toggleRotation()},
-	gravity: () => {toggleGravity()}
+	gravity: () => {toggleGravity()},
+	grid: () => {toggleGrid()}
 }
 
 

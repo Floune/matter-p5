@@ -38,6 +38,13 @@ function isNotInToolbar() {
   return mConstraint.mouse.position.x > 81
 }
 
-function toggleGravity() {
-  gravity = !gravity
+
+function addShape() {
+  let l = balls.length
+  if (window.params.currentShape === "ball") {
+    balls.push(new Ball(mouseX, mouseY, l));
+  }
+  if (window.params.currentShape === "square") {
+    balls.push(new Square(mouseX, mouseY, l));
+  }
 }

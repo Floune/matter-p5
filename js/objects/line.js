@@ -34,7 +34,6 @@ class Line {
 		this.body = Bodies.rectangle(this.x, this.y, this.w, this.h)
 		this.body.isStatic = !gravity
 		World.add(world, this.body)
-		this.body.isStatic = true		
 	}
 
 	alignSomehow() {

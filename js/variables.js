@@ -2,10 +2,6 @@ let balls 		= [];
 let lines 		= [];
 let curves 		= [];
 
-let canvas;
-let engine;
-let world;
-
 let Engine 		= Matter.Engine,
 World 			= Matter.World,
 Bodies 			= Matter.Bodies,
@@ -16,12 +12,17 @@ Mouse 			= Matter.Mouse,
 MouseConstraint = Matter.MouseConstraint,
 Body 			= Matter.Body
 
-let mConstraint;
+let canvas;
+let engine;
+let world;
 let refX, refY;
+let mConstraint;
+let selected;
 let legend 		= false
 let drawmode 	= true
-let selected;
-let gravity = true
+let gravity 	= true
+let gridMode	= false
+let gridGap	= 50;
 
 window.params = {
 	currentShape: "ball",

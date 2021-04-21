@@ -74,6 +74,13 @@ function keyPressed() {
     case 75:
       removeSelection()
       break;
+     //z
+   case 90:
+     toggleGrid()
+     break;    // k
+   case 71:
+     toggleGravity()
+     break;
   }
 
 }
@@ -110,28 +117,6 @@ function handleDrawModeRelease() {
   }
 }
 
-
-function deselectAll() {
-  lines.forEach(line => {
-    line.selected = false;
-  })
-}
-
-function toggleRotation() {
-  lines.forEach(line => {
-    if (line.selected === true) {
-      line.handleRot()
-    }
-  })
-}
-
-function toggleDraw() {
-  drawmode = !drawmode
-  document.body.classList.contains("interaction") ? document.body.classList.remove("interaction") : document.body.classList.add("interaction")
-}
-
-
-
 function handleLoopInteractions() {
 
   if (keyIsPressed === true) {
@@ -140,14 +125,4 @@ function handleLoopInteractions() {
     }
   }
 
-}
-
-function addShape() {
-  let l = balls.length
-  if (window.params.currentShape === "ball") {
-    balls.push(new Ball(mouseX, mouseY, l));
-  }
-  if (window.params.currentShape === "square") {
-    balls.push(new Square(mouseX, mouseY, l));
-  }
 }

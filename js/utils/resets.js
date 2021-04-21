@@ -54,3 +54,9 @@ function extractSelectedIndex() {
   return ret;
 }
 
+function deselectAll() {
+  lines.forEach(line => {
+    line.selected = false;
+  })
+}
+
