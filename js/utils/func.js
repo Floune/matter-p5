@@ -35,7 +35,7 @@ function randomColor() {
 }
 
 function isNotInToolbar() {
-  return mConstraint.mouse.position.x > 81
+  return mConstraint.mouse.position.x > 36
 }
 
 
