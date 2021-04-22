@@ -42,6 +42,7 @@ const triggers = [
 	{label:"horizontal_rule", action:"barrier", descr:"barrier"},
 	{label:"circle", action:"circle", descr:"circle"},
 	{label:"panorama_wide_angle_select", action:"square", descr:"square"},
+	{label:"upgrade", action:"slingshot", descr:"slingshot!"},
 ]
 
 const actions = {
@@ -53,7 +54,8 @@ const actions = {
 	spin: () => {toggleRotation()},
 	gravity: () => {toggleGravity()},
 	grid: () => {toggleGrid()},
-	link: () => {linkSelection()}
+	link: () => {linkSelection()},
+	slingshot: () => {slingTheWorld()}
 }
 
 

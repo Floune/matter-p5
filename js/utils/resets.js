@@ -17,6 +17,8 @@ function resetConstraints() {
     if (toDelete.label !== "Mouse Constraint")
       Composite.remove(world, toDelete, true)
   })
+  links = []
+  slingshots = []
 }
 
 function resetSketch() {
@@ -64,6 +66,7 @@ function extractSelectedIndex() {
 
 function deselectAll() {
   selected = null;
+  selection = []
   let limit = lines.length > balls.length ? lines.length : balls.length
   for (let i = 0; i < limit; i++) {
     if (lines[i]) {

@@ -15,7 +15,6 @@ function mousePressed() {
 }
 
 function keyPressed() {
-
   console.log(keyCode)
   let ki = keyCode
   switch(ki) {
@@ -78,6 +77,8 @@ function keyPressed() {
 function mouseReleased() {
   if (drawmode === true) {
     handleDrawModeRelease()
+  } else if (drawmode === false) {
+    handleSlingShots()
   }
 }
 

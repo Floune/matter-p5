@@ -1,6 +1,6 @@
 let balls 		= [];
 let lines 		= [];
-let curves 		= [];
+let slingshots 	= [];
 
 let Engine 		= Matter.Engine,
 World 			= Matter.World,
@@ -20,11 +20,12 @@ let world;
 let refX, refY;
 let mConstraint;
 let selected;
+let selection = []
+let currentlySlinged = null;
 let legend 		= false
-let drawmode 	= true
+let drawmode 	= false
 let gravity 	= true
 let gridMode	= false
-let linkMode	= false
 let links 		= []
 let gridGap		= 50;
 

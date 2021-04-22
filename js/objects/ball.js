@@ -1,8 +1,8 @@
 class Ball extends Base {
-	constructor(x, y, index) {
+	constructor(x, y, index, radius = window.params.ball.r) {
 		super(x, y, index)
 		const ballParams = window.params.pparams
-		this.r = window.params.ball.r
+		this.r = radius
 		this.color = randomColor()
 		this.body = Bodies.circle(this.x, this.y, this.r, ballParams)
 		this.body.isStatic = !gravity

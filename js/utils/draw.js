@@ -1,12 +1,16 @@
 function drawHUD() {
-
 	background(255);
 	if (gridMode === true) {drawGrid()}
-
 	ground.draw()
 
-	legend && drawLegend() 
+	legend && drawLegend()
+
 	drawInfos()
+
+}
+
+function debug(bass) {
+
 }
 
 function createLine() {
@@ -44,15 +48,16 @@ function drawInfos() {
 	text("lines: " + lines.length, 400, 20)
 	text(gravity === true ? "gravity" : "static", 500, 20)
 	text(drawmode === true ? "mode: draw" : "mode: interaction", 600, 20)
+
 }
 
 function drawAssets() {
 
-	for (i = 0; i < lines.length; i++) {
+	for (let i = 0; i < lines.length; i++) {
 		lines[i].draw()
 	}
 
-	for (i = 0; i < balls.length; i++) {
+	for (let i = 0; i < balls.length; i++) {
 		balls[i].draw()
 		if (balls[i].isOffScreen()) {
 			balls[i].seppuku();
@@ -61,10 +66,14 @@ function drawAssets() {
 		}
 	}
 
-	for (i = 0; i < world.constraints.length; i++) {
-		if (world.constraints[i].label !== "Mouse Constraint") {
-			line(world.constraints[i].bodyA.position.x, world.constraints[i].bodyA.position.y, world.constraints[i].bodyB.position.x, world.constraints[i].bodyB.position.y)
+	for (let i = 0; i < links.length; i++) {
+		if (links[i].label !== "Mouse Constraint") {
+			line(links[i].bodyA.position.x, links[i].bodyA.position.y, links[i].bodyB.position.x, links[i].bodyB.position.y)
 		}
+	}
+
+	for (let i = 0; i < slingshots.length; i++) {
+		slingshots[i].draw()
 	}
 }
 

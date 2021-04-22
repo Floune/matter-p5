@@ -59,7 +59,7 @@ function addShape() {
   }
 }
 
-function linkSelection() {
+function selectedBodies() {
   let selection = []
   let limit = lines.length > balls.length ? lines.length : balls.length
   for (let u = 0; u < limit; u++) {
@@ -70,6 +70,11 @@ function linkSelection() {
       selection.push(balls[u])
     }
   }
+  return selection
+}
+
+function linkSelection() {
+  let selection = selectedBodies()
   let k = 0
   while (k < selection.length - 1) {
     let distance = getDistance(selection[k].body.position.x, selection[k].body.position.y, selection[k + 1].body.position.x, selection[k + 1].body.position.y);
@@ -80,8 +85,26 @@ function linkSelection() {
       stiffness: window.params.constraint.stiffness
     }
     let constraint = Constraint.create(options)
+    links.push(constraint)
     World.add(world, constraint)
     k++
   }
+}
+
+function slingTheWorld() {
+  if (drawmode === false) {
+    let selection = selectedBodies()
+    selection.forEach(item => {
+      slingshots.push(new SlingShot(item.body.position.x, item.body.position.y, item.body))
+    })
+  }
+}
+
+function handleSlingShots() {
+  slingshots.forEach(sli => {
+    if (mConstraint.body && sli.sling.bodyB && sli.sling.bodyB.id === mConstraint.body.id) {
+      currentlySlinged = sli
+    }
+  })
 }
 
