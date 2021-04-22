@@ -17,7 +17,8 @@ class Ball extends Base {
 		rotate(angle)
 		rectMode(CENTER)
 		fill(this.color)
-		stroke("black")
+		this.selected === true ? strokeWeight(3) : strokeWeight(1)
+		this.selected === true ? stroke("red") : stroke("black")
 		ellipse(0, 0, this.r * 1.8)
 		pop()
 	}

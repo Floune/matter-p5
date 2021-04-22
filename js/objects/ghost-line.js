@@ -4,7 +4,7 @@ class Ghostline {
 		this.x = x
 		this.y = y
 		this.w = w
-		this.h = 10
+		this.h = window.params.line.h
 		this.t = t
 		this.vx = ex - x
 		this.vy = ey - y
@@ -15,7 +15,7 @@ class Ghostline {
 		this.x = x
 		this.y = y
 		this.w = w
-		this.h = 10
+		this.h = window.params.line.h
 		this.t = t
 		this.vx = ex - x
 		this.vy = ey - y

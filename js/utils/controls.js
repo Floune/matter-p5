@@ -3,12 +3,14 @@ const ui = document.getElementById('controls')
 
 const controls = [
 	{name:'density', key: 'density', category:'pparams', min:0, max: 0.01, step: 0.001, defaultValue: 0.001},
-	{name:'friction', key: 'friction', category:'pparams' , min:0.01, max: 1, step: 0.01, defaultValue: 0.01},
-	{name:'frictionAir', key: 'frictionAir', category:'pparams' , min:0.00001, max: 1, step: 0.005, defaultValue: 0.00001},
+	{name:'friction', key: 'friction', category:'pparams' , min:0, max: 1, step: 0.01, defaultValue: 0.01},
+	{name:'frictionAir', key: 'frictionAir', category:'pparams' , min: 0, max: 1, step: 0.005, defaultValue: 0.00001},
 	{name:'restitution', key: 'restitution', category:'pparams' , min:0.1, max: 1, step: 0.1, defaultValue: 0.8},
-	{name:'circle radius', key: 'r', category:'ball' , min:1, max: 100, step: 1, defaultValue: 10},
+	{name:'circle-radius', key: 'r', category:'ball' , min:1, max: 100, step: 1, defaultValue: 10},
 	{name:'rect-width', key: 'w', category:'square' , min:1, max: 300, step: 1, defaultValue: 10},
 	{name:'rect-height', key: 'h', category:'square' , min:1, max: 300, step: 1, defaultValue: 10},
+	{name:'line-height', key: 'h', category:'line' , min:1, max: 50, step: 1, defaultValue: 10},
+	{name:'link-stiffness', key: 'stiffness', category:'constraint' , min:0, max: 1, step: 0.1, defaultValue: 0.4},
 ]
 
 

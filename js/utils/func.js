@@ -1,15 +1,22 @@
 function isShapeClicked() {
   let clicked = false;
   let i = 0;
-  let found = false;
   let actualX = mConstraint.mouse.position.x
   let actualY = mConstraint.mouse.position.y
-  while(i < lines.length) {
-    let verts = lines[i].body.vertices
-    if (Vertices.contains(verts, {x: actualX, y: actualY})) {
-      clicked = lines[i];
-      lines[i].selected = !lines[i].selected 
-      found = true
+  let limit = lines.length > balls.length ? lines.length : balls.length
+  while(i < limit) {
+    if (lines[i]) {
+      let verts = lines[i].body.vertices
+      if (Vertices.contains(verts, {x: actualX, y: actualY})) {
+        clicked = lines[i];
+        lines[i].selected = !lines[i].selected
+      }
+    } if (balls[i]) {
+      let verts = balls[i].body.vertices
+      if (Vertices.contains(verts, {x: actualX, y: actualY})) {
+        clicked = balls[i];
+        balls[i].selected = !balls[i].selected
+      }
     }
     i++
   }
@@ -35,14 +42,11 @@ function randomColor() {
 }
 
 function isNotInToolbar() {
-  return mConstraint.mouse.position.x > 40
+  return mouseX > 40
 }
 
 function isNotInParams() {
-  let b = document.getElementById("controls");
-  let w = b.clientWidth;
-  let h = b.clientHeight;
-  return !(mConstraint.mouse.position.x > width - w && mConstraint.mouse.position.y < h)
+  return true;
 }
 
 function addShape() {
@@ -54,3 +58,30 @@ function addShape() {
     balls.push(new Square(mouseX, mouseY, l));
   }
 }
+
+function linkSelection() {
+  let selection = []
+  let limit = lines.length > balls.length ? lines.length : balls.length
+  for (let u = 0; u < limit; u++) {
+    if (lines[u] && lines[u].selected === true) {
+      selection.push(lines[u])
+    }
+    if (balls[u] && balls[u].selected === true) {
+      selection.push(balls[u])
+    }
+  }
+  let k = 0
+  while (k < selection.length - 1) {
+    let distance = getDistance(selection[k].body.position.x, selection[k].body.position.y, selection[k + 1].body.position.x, selection[k + 1].body.position.y);
+    let options = {
+      bodyA: selection[k].body,
+      bodyB: selection[k + 1].body,
+      length: distance,
+      stiffness: window.params.constraint.stiffness
+    }
+    let constraint = Constraint.create(options)
+    World.add(world, constraint)
+    k++
+  }
+}
+

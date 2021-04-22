@@ -1,20 +1,28 @@
 function resetLines() {
   lines.forEach(toDelete => {
-    World.remove(world, toDelete.body)
+    Composite.remove(world, toDelete.body, true)
   })
   lines = []
 }
 
 function resetBalls() {
   balls.forEach(toDelete => {
-    World.remove(world, toDelete.body)
+    Composite.remove(world, toDelete.body, true)
   })
   balls = [];
+}
+
+function resetConstraints() {
+  world.constraints.forEach(toDelete => {
+    if (toDelete.label !== "Mouse Constraint")
+      Composite.remove(world, toDelete, true)
+  })
 }
 
 function resetSketch() {
   resetLines()
   resetBalls()
+  resetConstraints()
 }
 
 function undou() {
@@ -56,8 +64,14 @@ function extractSelectedIndex() {
 
 function deselectAll() {
   selected = null;
-  lines.forEach(line => {
-    line.selected = false;
-  })
+  let limit = lines.length > balls.length ? lines.length : balls.length
+  for (let i = 0; i < limit; i++) {
+    if (lines[i]) {
+      lines[i].selected = false;
+    }
+    if (balls[i]) {
+      balls[i].selected = false;
+    }
+  }
 }
 

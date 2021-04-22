@@ -4,7 +4,7 @@ class Line {
 		this.x = x
 		this.y = y
 		this.w = w
-		this.h = 10
+		this.h = window.params.line.h
 		this.t = t
 		this.vx = ex - x
 		this.vy = ey - y
@@ -32,7 +32,7 @@ class Line {
 
 	createBody() {
 		this.body = Bodies.rectangle(this.x, this.y, this.w, this.h)
-		this.body.isStatic = !gravity
+		this.body.isStatic = true
 		World.add(world, this.body)
 	}
 

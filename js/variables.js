@@ -43,4 +43,10 @@ window.params = {
 		w: 50,
 		h: 50,
 	},
+	line: {
+		h: 8
+	},
+	constraint: {
+		stiffness: 0.4
+	}
 }

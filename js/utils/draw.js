@@ -33,8 +33,10 @@ function drawLegend() {
 	text('k: delete selection', 45, 160);
 	text('s: spin selection', 45, 180);
 	text('d: toggle mode', 45, 200);
-	text('g: toggle gravity', 45, 220);
+	text('g: unlock selection', 45, 220);
 	text('z: toggle grid', 45, 240);
+	text('e: link selection', 45, 260);
+	text('c: remove links', 45, 280);
 }
 
 function drawInfos() {
@@ -56,6 +58,12 @@ function drawAssets() {
 			balls[i].seppuku();
 			balls.splice(i, 1)
 			i--; // sinon on saute des boulesw
+		}
+	}
+
+	for (i = 0; i < world.constraints.length; i++) {
+		if (world.constraints[i].label !== "Mouse Constraint") {
+			line(world.constraints[i].bodyA.position.x, world.constraints[i].bodyA.position.y, world.constraints[i].bodyB.position.x, world.constraints[i].bodyB.position.y)
 		}
 	}
 }
