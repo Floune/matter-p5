@@ -33,8 +33,8 @@ function drawLegend() {
 	text('r: reset', 45, 100);
 	text('b: reset balls', 45, 120);
 	text('b: reset lines', 45, 140);
-	text('u: remove last line', 45, 80);
-	text('k: delete selected line (just one)', 45, 160);
+	text('u: undo', 45, 80);
+	text('k: delete selection', 45, 160);
 	text('s: spin selection', 45, 180);
 	text('d: toggle mode', 45, 200);
 	text('g: unlock selection', 45, 220);
