@@ -23,6 +23,7 @@ function createLine() {
 	let l = new Line(refX, refY, longueur, theta, actualX, actualY, lines.length);
 	l.init()
 	lines.push(l)
+	handleUndoBuffer(l)
 }
 
 function drawLegend() {

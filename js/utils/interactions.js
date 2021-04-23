@@ -90,8 +90,9 @@ function mouseDragged() {
 
     longueur = getDistance(refX, refY, actualX, actualY)
     var theta = atan2(actualY - refY, actualX - refX);
-
-    ghost.update(refX, refY, longueur, theta, actualX, actualY)
+    if (ghost) {
+      ghost.update(refX, refY, longueur, theta, actualX, actualY)
+    }
   }
 }
 

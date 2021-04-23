@@ -62,7 +62,7 @@ function addShape() {
 }
 
 function handleUndoBuffer(item) {
-  lastCreatedBuffer.pop(item);
+  lastCreatedBuffer.push(item);
 }
 
 function selectedBodies() {
