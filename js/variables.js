@@ -28,6 +28,7 @@ let gravity 	= true
 let gridMode	= false
 let links 		= []
 let gridGap		= 50;
+let slingSound
 
 window.params = {
 	currentShape: "ball",
@@ -49,5 +50,5 @@ window.params = {
 	},
 	constraint: {
 		stiffness: 0.4
-	}
+	},
 }

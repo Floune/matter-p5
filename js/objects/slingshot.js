@@ -10,11 +10,13 @@ class SlingShot {
             length: 20,
             label: "sling"
         }
+        this.sound = slingSound
         this.sling = Constraint.create(options)
         World.add(world, this.sling)
     }
 
     fly() {
+        this.sound.play()
         this.sling.bodyB = null
         Composite.remove(world, this.sling, true)
         slingshots.pop()

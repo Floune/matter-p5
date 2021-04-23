@@ -8,7 +8,7 @@ function setup() {
   ground = new Ground()
   ground.init()
   soundFormats('mp3', 'ogg', 'wav');
-  //mySound = loadSound('assets/doorbell');
+  slingSound = loadSound('assets/sling.mp3');
 }
 
 function draw() {
