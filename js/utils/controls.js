@@ -55,7 +55,7 @@ const actions = {
 	barrier: () => {window.params.currentShape = "barrier";},
 	mode: () => {toggleDraw()},
 	spin: () => {toggleRotation()},
-	lock: () => {lockUnlockItem},
+	lock: () => {lockUnlockselection()},
 	grid: () => {toggleGrid()},
 	link: () => {linkSelection()},
 	slingshot: () => {slingTheWorld()},

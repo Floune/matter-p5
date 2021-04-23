@@ -1,6 +1,6 @@
 class SlingShot  extends Pin {
     constructor(x, y, body) {
-        super(x, y, z)
+        super(x, y, body)
         this.options.label = "sling"
         this.sound = slingSound
         this.sling = Constraint.create(this.options)

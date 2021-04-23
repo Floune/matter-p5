@@ -1,13 +1,8 @@
-function lockUnlockItem() {
-    let limit = lines.length > balls.length ? lines.length : balls.length
-    for (let i = 0; i< limit; i++) {
-        if (lines[i] && lines[i].selected === true) {
-            lines[i].body.isStatic === false ? Body.setStatic(lines[i].body, true) : Body.setStatic(lines[i].body, false)
-        }
-        if (balls[i] && balls[i].selected === true) {
-            balls[i].body.isStatic === false ? Body.setStatic(balls[i].body, true) : Body.setStatic(balls[i].body, false)
-        }
-    }
+function lockUnlockselection() {
+  console.log("qsfqdf")
+  selection.forEach(item => {
+      item.body.isStatic === true ? Body.setStatic(item.body, false) : Body.setStatic(item.body, true)
+  })
 }
 
 function toggleGrid() {

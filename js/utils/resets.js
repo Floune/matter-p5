@@ -3,6 +3,7 @@ function resetLines() {
     Composite.remove(world, toDelete.body, true)
   })
   lines = []
+  lastCreatedBuffer = []
 }
 
 function resetBalls() {
@@ -10,6 +11,7 @@ function resetBalls() {
     Composite.remove(world, toDelete.body, true)
   })
   balls = [];
+  lastCreatedBuffer = []
 }
 
 function resetConstraints() {
@@ -19,12 +21,14 @@ function resetConstraints() {
   })
   links = []
   slingshots = []
+  lastCreatedBuffer = []
 }
 
 function resetSketch() {
   resetLines()
   resetBalls()
   resetConstraints()
+  lastCreatedBuffer = []
 }
 
 function undou() {
