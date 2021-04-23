@@ -28,10 +28,19 @@ function resetSketch() {
 }
 
 function undou() {
-  if (lines.length > 0) {
-    let toDelete = lines.pop();
-    World.remove(world, toDelete.body);
+  let item = lastCreatedBuffer.pop()
+  if (item) {
+    if (item.body.label === "line") {
+      let index = extractSelectedIndex(item, "line")
+      Composite.remove(world, item.body);
+      lines.splice(index, 1)
+    } else if (item.body.label === "Circle Body" || item.body.label === "Rectangle Body") {
+      let index = extractSelectedIndex(item, "ball")
+      Composite.remove(world, item.body);
+      balls.splice(index, 1)
+    }
   }
+
 }
 
 function undouGhost() {
@@ -44,28 +53,47 @@ function undouGhost() {
 }
 
 function removeSelection() {
-  if (selected !== false) {
-    World.remove(world, selected.body)
-    let index = extractSelectedIndex()
-    lines.splice(index, 1)
-    selected = false
+  if (selection.length > 0) {
+    selection.forEach(item => {
+      if (item.body.label === "line") {
+        World.remove(world, item.body)
+        let index = extractSelectedIndex(item, "line")
+        lines.splice(index, 1)
+      } else if (item.body.label === "Rectangle Body" || item.body.label === "Circle Body") {
+        World.remove(world, item.body)
+        let index = extractSelectedIndex(item, "ball")
+        balls.splice(index, 1)
+      }
+
+    })
+    selection = []
   }
 }
 
-function extractSelectedIndex() {
+function extractSelectedIndex(item, type) {
   let i = 0;
+  let j = 0;
   let ret;
-  while (i < lines.length) {
-    if (selected.index === lines[i].index) {
-      ret = i
+  if (type === "line") {
+    while (i < lines.length) {
+      if (item.index === lines[i].index) {
+        ret = i
+      }
+      i++;
     }
-    i++;
+  } else if (type === "ball") {
+    while (j < balls.length) {
+      if (item.index === balls[j].index) {
+        ret = j
+      }
+      j++;
+    }
   }
+
   return ret;
 }
 
 function deselectAll() {
-  selected = false;
   selection = []
   let limit = lines.length > balls.length ? lines.length : balls.length
   for (let i = 0; i < limit; i++) {

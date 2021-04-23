@@ -24,8 +24,9 @@ let leftWall = new Boundary(0, -60, 60, window.innerHeight + 120, -60, window.in
 let rightWall = new Boundary(window.innerWidth, -60,  60, window.innerHeight + 120, 60, window.innerHeight + 120)
 let refX, refY;
 let mConstraint;
-let selected = false;
+
 let selection = []
+let lastCreatedBuffer = []
 let currentlySlinged = null;
 let legend 		= false
 let drawmode 	= false

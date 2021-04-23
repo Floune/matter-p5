@@ -97,8 +97,7 @@ function mouseDragged() {
 
 function handleInteractionModeClic() {
   if (isNotInToolbar() === true) {
-    selected = isShapeClicked()
-    if (selected === false) {
+    if (isShapeClicked() === false) {
       deselectAll()
     }
   }

@@ -1,6 +1,6 @@
 function isShapeClicked() {
-  let clicked = false;
   let i = 0;
+  let clieck = false
   let actualX = mConstraint.mouse.position.x
   let actualY = mConstraint.mouse.position.y
   let limit = lines.length > balls.length ? lines.length : balls.length
@@ -8,19 +8,21 @@ function isShapeClicked() {
     if (lines[i]) {
       let verts = lines[i].body.vertices
       if (Vertices.contains(verts, {x: actualX, y: actualY})) {
-        clicked = lines[i];
+        selection.push(lines[i])
+        clieck = true
         lines[i].selected = !lines[i].selected
       }
     } if (balls[i]) {
       let verts = balls[i].body.vertices
       if (Vertices.contains(verts, {x: actualX, y: actualY})) {
-        clicked = balls[i];
+        selection.push(balls[i])
+        clieck = true
         balls[i].selected = !balls[i].selected
       }
     }
     i++
   }
-  return clicked;
+  return clieck
 }
 
 function getDistance(x1, y1, x2, y2) {
@@ -48,11 +50,19 @@ function isNotInToolbar() {
 function addShape() {
   let l = balls.length
   if (window.params.currentShape === "ball") {
-    balls.push(new Ball(mouseX, mouseY, l));
+    let item = new Ball(mouseX, mouseY, l)
+    balls.push(item);
+    handleUndoBuffer(item)
   }
   if (window.params.currentShape === "square") {
-    balls.push(new Square(mouseX, mouseY, l));
+    let item = new Square(mouseX, mouseY, l)
+    balls.push(item);
+    handleUndoBuffer(item)
   }
+}
+
+function handleUndoBuffer(item) {
+  lastCreatedBuffer.pop(item);
 }
 
 function selectedBodies() {
