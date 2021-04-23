@@ -56,6 +56,7 @@ window.params = {
 		h: 8
 	},
 	constraint: {
-		stiffness: 0.4
+		stiffness: 0.2,
+		length: 0
 	},
 }

@@ -1,17 +1,9 @@
-class SlingShot {
+class SlingShot  extends Pin {
     constructor(x, y, body) {
-        const options = {
-            pointA: {
-                x: x,
-                y: y
-            },
-            bodyB: body,
-            stiffness: window.params.constraint.stiffness,
-            length: 20,
-            label: "sling"
-        }
+        super(x, y, z)
+        this.options.label = "sling"
         this.sound = slingSound
-        this.sling = Constraint.create(options)
+        this.sling = Constraint.create(this.options)
         World.add(world, this.sling)
     }
 

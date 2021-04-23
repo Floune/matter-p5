@@ -10,7 +10,8 @@ const controls = [
 	{name:'rect-width', key: 'w', category:'square' , min:1, max: 300, step: 1, defaultValue: 10},
 	{name:'rect-height', key: 'h', category:'square' , min:1, max: 300, step: 1, defaultValue: 10},
 	{name:'line-height', key: 'h', category:'line' , min:1, max: 50, step: 1, defaultValue: 10},
-	{name:'link-stiffness', key: 'stiffness', category:'constraint' , min:0, max: 1, step: 0.1, defaultValue: 0.4},
+	{name:'stiffness', key: 'stiffness', category:'constraint' , min:0, max: 1, step: 0.1, defaultValue: 0.2},
+	{name:'sling-length', key: 'length', category:'constraint' , min:0, max: 400, step: 10, defaultValue: 0},
 ]
 
 

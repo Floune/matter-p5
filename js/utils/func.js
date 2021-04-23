@@ -82,6 +82,9 @@ function selectedBodies() {
 function linkSelection() {
   let selection = selectedBodies()
   let k = 0
+  if (selection.length === 1) {
+    slingshots.push(new Pin(selection[0].body.position.x, selection[0].body.position.y, selection[0].body))
+  }
   while (k < selection.length - 1) {
     let distance = getDistance(selection[k].body.position.x, selection[k].body.position.y, selection[k + 1].body.position.x, selection[k + 1].body.position.y);
     let options = {
@@ -108,7 +111,7 @@ function slingTheWorld() {
 
 function handleSlingShots() {
   slingshots.forEach(sli => {
-    if (mConstraint.body && sli.sling.bodyB && sli.sling.bodyB.id === mConstraint.body.id) {
+    if (mConstraint.body && sli && sli.sling && sli.sling.bodyB && sli.sling.bodyB.id === mConstraint.body.id) {
       currentlySlinged = sli
     }
   })

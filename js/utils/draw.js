@@ -38,7 +38,7 @@ function drawLegend() {
 	text('k: delete selection', 45, 160);
 	text('s: spin selection', 45, 180);
 	text('d: toggle mode', 45, 200);
-	text('g: unlock selection', 45, 220);
+	text('g: toggle gravity', 45, 220);
 	text('z: toggle grid', 45, 240);
 	text('e: link selection', 45, 260);
 	text('c: remove links', 45, 280);
