@@ -1,4 +1,4 @@
-function toggleGravity() {
+function lockUnlockItem() {
     let limit = lines.length > balls.length ? lines.length : balls.length
     for (let i = 0; i< limit; i++) {
         if (lines[i] && lines[i].selected === true) {
@@ -29,4 +29,27 @@ function toggleDraw() {
 
 function toggleLegend() {
     legend = !legend
+}
+
+function toggleGravity() {
+    engine.world.gravity.y = engine.world.gravity.y === 0 ? 1 : 0;
+}
+
+function toggleBox() {
+    boxMode = !boxMode
+    if (boxMode === true) {
+        ceiling.init()
+        boundaries.push(ceiling)
+        leftWall.init()
+        boundaries.push(leftWall)
+        rightWall.init()
+        boundaries.push(rightWall)
+    } else if (boxMode === false) {
+        boundaries.forEach(boundary => {
+            World.remove(world, boundary.body)
+        })
+        boundaries = []
+        ground.init()
+        boundaries.push(ground)
+    }
 }

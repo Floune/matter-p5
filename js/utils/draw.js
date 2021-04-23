@@ -1,7 +1,7 @@
 function drawHUD() {
 	background(255);
 	if (gridMode === true) {drawGrid()}
-	ground.draw()
+
 
 	legend && drawLegend()
 
@@ -30,11 +30,11 @@ function drawLegend() {
 	text('mouse: draw lines', 45, 20);
 	text('space: spawn single ball', 45, 40);
 	text('a: spawn chaos', 45, 60);
-	text('u: remove last line', 45, 80);
 	text('r: reset', 45, 100);
 	text('b: reset balls', 45, 120);
 	text('b: reset lines', 45, 140);
-	text('k: delete selection', 45, 160);
+	text('u: remove last line', 45, 80);
+	text('k: delete selected line (just one)', 45, 160);
 	text('s: spin selection', 45, 180);
 	text('d: toggle mode', 45, 200);
 	text('g: unlock selection', 45, 220);
@@ -44,14 +44,19 @@ function drawLegend() {
 }
 
 function drawInfos() {
+	text(boxMode === true ? "box" : "open", 200, 20)
 	text("balls: " + balls.length, 300, 20)
 	text("lines: " + lines.length, 400, 20)
-	text(gravity === true ? "gravity" : "static", 500, 20)
+	text(engine.world.gravity.y === 1 ? "gravity" : "no gravity", 500, 20)
 	text(drawmode === true ? "mode: draw" : "mode: interaction", 600, 20)
 
 }
 
 function drawAssets() {
+
+	for (let i = 0; i < boundaries.length; i++) {
+		boundaries[i].draw()
+	}
 
 	for (let i = 0; i < lines.length; i++) {
 		lines[i].draw()

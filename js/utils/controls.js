@@ -5,7 +5,7 @@ const controls = [
 	{name:'density', key: 'density', category:'pparams', min:0, max: 0.01, step: 0.001, defaultValue: 0.001},
 	{name:'friction', key: 'friction', category:'pparams' , min:0, max: 1, step: 0.01, defaultValue: 0.01},
 	{name:'frictionAir', key: 'frictionAir', category:'pparams' , min: 0, max: 1, step: 0.005, defaultValue: 0.00001},
-	{name:'restitution', key: 'restitution', category:'pparams' , min:0.1, max: 1, step: 0.1, defaultValue: 0.8},
+	{name:'restitution', key: 'restitution', category:'pparams' , min:0.1, max: 1, step: 0.1, defaultValue: 1},
 	{name:'circle-radius', key: 'r', category:'ball' , min:1, max: 100, step: 1, defaultValue: 10},
 	{name:'rect-width', key: 'w', category:'square' , min:1, max: 300, step: 1, defaultValue: 10},
 	{name:'rect-height', key: 'h', category:'square' , min:1, max: 300, step: 1, defaultValue: 10},
@@ -35,14 +35,16 @@ const buttons = document.getElementById('buttons')
 const triggers = [
 	{label:"help", action:"help", descr:"I need help"},
 	{label:"mode_edit", action:"mode", descr:"toogle mode"},
-	{label:"locked", action:"gravity", descr:"gravity"},
+	{label:"locked", action:"lock", descr:"lock/unlock item"},
+	{label:"south", action:"gravity", descr:"toggle gravity"},
 	{label:"calendar_view_month", action:"grid", descr:"toggle grid"},
+	{label:"picture_in_picture", action:"box", descr:"toggleBox"},
 	{label:"cached", action:"spin", descr:"spin selection"},
 	{label:"share", action:"link", descr:"link shapes"},
+	{label:"upgrade", action:"slingshot", descr:"slingshot!"},
 	{label:"horizontal_rule", action:"barrier", descr:"barrier"},
 	{label:"circle", action:"circle", descr:"circle"},
 	{label:"panorama_wide_angle_select", action:"square", descr:"square"},
-	{label:"upgrade", action:"slingshot", descr:"slingshot!"},
 ]
 
 const actions = {
@@ -52,10 +54,12 @@ const actions = {
 	barrier: () => {window.params.currentShape = "barrier";},
 	mode: () => {toggleDraw()},
 	spin: () => {toggleRotation()},
-	gravity: () => {toggleGravity()},
+	lock: () => {lockUnlockItem},
 	grid: () => {toggleGrid()},
 	link: () => {linkSelection()},
-	slingshot: () => {slingTheWorld()}
+	slingshot: () => {slingTheWorld()},
+	gravity: () => {toggleGravity()},
+	box: () => {toggleBox()},
 }
 
 

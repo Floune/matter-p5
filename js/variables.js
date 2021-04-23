@@ -1,6 +1,7 @@
 let balls 		= [];
 let lines 		= [];
 let slingshots 	= [];
+let boundaries	= [];
 
 let Engine 		= Matter.Engine,
 World 			= Matter.World,
@@ -17,9 +18,13 @@ Body 			= Matter.Body
 let canvas;
 let engine;
 let world;
+let ground = new Boundary(-60, window.innerHeight + 60, window.innerWidth + 120, 60, window.innerWidth + 60, window.innerHeight - window.innerHeight - 60)
+let ceiling = new Boundary(-60, -60, window.innerWidth, 60, window.innerWidth + 120, 60)
+let leftWall = new Boundary(0, -60, 60, window.innerHeight + 120, -60, window.innerHeight + 60)
+let rightWall = new Boundary(window.innerWidth, -60,  60, window.innerHeight + 120, 60, window.innerHeight + 120)
 let refX, refY;
 let mConstraint;
-let selected;
+let selected = false;
 let selection = []
 let currentlySlinged = null;
 let legend 		= false
@@ -29,6 +34,7 @@ let gridMode	= false
 let links 		= []
 let gridGap		= 50;
 let slingSound
+let boxMode = false
 
 window.params = {
 	currentShape: "ball",
@@ -36,7 +42,7 @@ window.params = {
 		density: 0.05,
 		friction: 0.01,
 		frictionAir: 0.00001,
-		restitution: 0.8,
+		restitution: 1,
 	},
 	ball: {
 		r: 10,

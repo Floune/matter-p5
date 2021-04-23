@@ -5,8 +5,8 @@ function setup() {
   enableMouse()
   World.add(world, mConstraint)
 
-  ground = new Ground()
   ground.init()
+
   soundFormats('mp3', 'ogg', 'wav');
   slingSound = loadSound('assets/sling.mp3');
 }

@@ -31,7 +31,7 @@ class Line {
 	}
 
 	createBody() {
-		this.body = Bodies.rectangle(this.x, this.y, this.w, this.h)
+		this.body = Bodies.rectangle(this.x, this.y, this.w, this.h, window.params.pparams)
 		this.body.isStatic = true
 		World.add(world, this.body)
 	}

@@ -1,12 +1,12 @@
 
-class Ground {
-	constructor() {
-		this.h = 50
-		this.x = 0
-		this.y = window.innerHeight
-		this.w = window.innerWidth
-		this.vx = window.innerWidth - this.x
-		this.vy = window.innerHeight - this.y
+class Boundary {
+	constructor(x, y, w, h, vx, vy) {
+		this.h = h
+		this.x = x
+		this.y = y
+		this.w = w
+		this.vx = vx
+		this.vy = vy
 		this.color = "black"
 	}
 	init() {
@@ -15,7 +15,7 @@ class Ground {
 	}
 
 	createBody() {
-		this.body = Bodies.rectangle(this.x, this.y, this.w, this.h)
+		this.body = Bodies.rectangle(this.x, this.y, this.w, this.h, window.params.pparams)
 		World.add(world, this.body)
 		this.body.isStatic = true		
 	}
@@ -38,4 +38,3 @@ class Ground {
 		pop()
 	}
 }
-

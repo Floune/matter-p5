@@ -45,10 +45,6 @@ function isNotInToolbar() {
   return mouseX > 40
 }
 
-function isNotInParams() {
-  return true;
-}
-
 function addShape() {
   let l = balls.length
   if (window.params.currentShape === "ball") {
@@ -107,4 +103,5 @@ function handleSlingShots() {
     }
   })
 }
+
 

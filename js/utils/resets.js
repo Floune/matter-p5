@@ -65,7 +65,7 @@ function extractSelectedIndex() {
 }
 
 function deselectAll() {
-  selected = null;
+  selected = false;
   selection = []
   let limit = lines.length > balls.length ? lines.length : balls.length
   for (let i = 0; i < limit; i++) {
