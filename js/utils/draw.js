@@ -53,6 +53,7 @@ function drawInfos() {
 	text("lines: " + lines.length, 400, 20)
 	text(engine.world.gravity.y === 1 ? "gravity" : "no gravity", 500, 20)
 	text(drawmode === true ? "mode: draw" : "mode: interaction", 600, 20)
+	text(staticMode === true ? "static" : "moving", 500, 40)
 
 }
 

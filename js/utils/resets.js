@@ -34,6 +34,7 @@ function resetSketch() {
 
 function undou() {
   let item = lastCreatedBuffer.pop()
+  console.log(item)
   if (item) {
     if (item.body && item.body.label === "line") {
       let index = extractSelectedIndex(item, "line")
@@ -89,7 +90,7 @@ function extractSelectedIndex(item, type) {
   let l = 0;
   let m = 0;
   let ret;
-  if (type === type) {
+  if (type === "line") {
     while (i < lines.length) {
       if (item.index === lines[i].index) {
         ret = i
