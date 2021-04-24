@@ -19,6 +19,7 @@ function resetConstraints() {
     if (toDelete.label !== "Mouse Constraint")
       Composite.remove(world, toDelete, true)
   })
+  constr = []
   links = []
   slingshots = []
   lastCreatedBuffer = []
@@ -34,15 +35,22 @@ function resetSketch() {
 function undou() {
   let item = lastCreatedBuffer.pop()
   if (item) {
-    if (item.body.label === "line") {
+    if (item.body && item.body.label === "line") {
       let index = extractSelectedIndex(item, "line")
       Composite.remove(world, item.body);
       lines.splice(index, 1)
-    } else if (item.body.label === "Circle Body" || item.body.label === "Rectangle Body") {
+    } else if (item.body && item.body.label === "Circle Body" || item.body && item.body.label === "Rectangle Body") {
       let index = extractSelectedIndex(item, "ball")
       Composite.remove(world, item.body);
       balls.splice(index, 1)
+    } else if (item.label && item.label === "Constraint") {
+      let indexConstr = extractSelectedIndex(item, "constr")
+      let indexLinks = extractSelectedIndex(item, "links")
+      Composite.remove(world, item);
+      constr.splice(indexConstr, 1)
+      links.splice(indexLinks, 1)
     }
+
   }
 
 }
@@ -77,8 +85,11 @@ function removeSelection() {
 function extractSelectedIndex(item, type) {
   let i = 0;
   let j = 0;
+  let k = 0;
+  let l = 0;
+  let m = 0;
   let ret;
-  if (type === "line") {
+  if (type === type) {
     while (i < lines.length) {
       if (item.index === lines[i].index) {
         ret = i
@@ -91,6 +102,34 @@ function extractSelectedIndex(item, type) {
         ret = j
       }
       j++;
+    }
+  } else if (type === "constr") {
+    while (k < constr.length) {
+      if (item.index === constr[k].index) {
+        ret = k
+      }
+      k++;
+    }
+  } else if (type === "links") {
+    while (l < links.length) {
+      if (item.index === links[l].index) {
+        ret = l
+      }
+      l++;
+    }
+  } else if (type === "slingshot") {
+    while (m < slingshots.length) {
+      if (item.index === slingshots[m].index) {
+        ret = m
+      }
+      m++;
+    }
+    k = 0
+    while (k < constr.length) {
+      if (item.index === constr[k].index) {
+        ret = k
+      }
+      k++;
     }
   }
 

@@ -66,17 +66,17 @@ function handleUndoBuffer(item) {
 }
 
 function selectedBodies() {
-  let selection = []
+  let select = []
   let limit = lines.length > balls.length ? lines.length : balls.length
   for (let u = 0; u < limit; u++) {
     if (lines[u] && lines[u].selected === true) {
-      selection.push(lines[u])
+      select.push(lines[u])
     }
     if (balls[u] && balls[u].selected === true) {
-      selection.push(balls[u])
+      select.push(balls[u])
     }
   }
-  return selection
+  return select
 }
 
 function linkSelection() {
@@ -95,6 +95,8 @@ function linkSelection() {
     }
     let constraint = Constraint.create(options)
     links.push(constraint)
+    constr.push(constraint)
+    handleUndoBuffer(constraint)
     World.add(world, constraint)
     k++
   }
@@ -111,10 +113,24 @@ function slingTheWorld() {
 
 function handleSlingShots() {
   slingshots.forEach(sli => {
-    if (mConstraint.body && sli && sli.sling && sli.sling.bodyB && sli.sling.bodyB.id === mConstraint.body.id) {
+    if (mConstraint.body && sli && sli.body && sli.body.bodyB && sli.body.bodyB.id === mConstraint.body.id) {
       currentlySlinged = sli
     }
   })
 }
 
-
+function releaseSlingShotOrNot() {
+  if (currentlySlinged && currentlySlinged.body.label === "sling" && currentlySlinged.body.bodyB && currentlySlinged.body.bodyB.speed > currentlySlinged.body.stiffness * 25 ) {
+    let newB
+    if (currentlySlinged.body.bodyB.label === "Rectangle Body") {
+      newB = new Square(currentlySlinged.body.pointA.x, currentlySlinged.body.pointA.y, balls.length);
+    } else if (currentlySlinged.body.bodyB.label === "Circle Body") {
+      newB = new Ball(currentlySlinged.body.pointA.x, currentlySlinged.body.pointA.y, balls.length, currentlySlinged.body.bodyB.circleRadius)
+    }
+    let newSl = new SlingShot(currentlySlinged.body.pointA.x, currentlySlinged.body.pointA.y, newB.body );
+    currentlySlinged.fly()
+    let index = extractSelectedIndex(currentlySlinged, "slingshot")
+    slingshots.push(newSl)
+    balls.push(newB)
+  }
+}

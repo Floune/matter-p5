@@ -45,7 +45,10 @@ function drawLegend() {
 }
 
 function drawInfos() {
+	strokeWeight(1)
 	text(boxMode === true ? "box" : "open", 200, 20)
+	text("constraints :" + constr.length, 200, 40)
+	text("balls: " + balls.length, 300, 20)
 	text("balls: " + balls.length, 300, 20)
 	text("lines: " + lines.length, 400, 20)
 	text(engine.world.gravity.y === 1 ? "gravity" : "no gravity", 500, 20)
@@ -81,6 +84,7 @@ function drawAssets() {
 	for (let i = 0; i < slingshots.length; i++) {
 		slingshots[i].draw()
 	}
+
 }
 
 function handleBarrier() {

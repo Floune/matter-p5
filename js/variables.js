@@ -2,6 +2,7 @@ let balls 		= [];
 let lines 		= [];
 let slingshots 	= [];
 let boundaries	= [];
+let constr		= [];
 
 let Engine 		= Matter.Engine,
 World 			= Matter.World,
@@ -32,6 +33,7 @@ let legend 		= false
 let drawmode 	= false
 let gravity 	= true
 let gridMode	= false
+let staticMode	= false
 let links 		= []
 let gridGap		= 50;
 let slingSound
@@ -56,7 +58,7 @@ window.params = {
 		h: 8
 	},
 	constraint: {
-		stiffness: 0.2,
+		stiffness: 0.02,
 		length: 0
 	},
 }

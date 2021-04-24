@@ -1,24 +1,22 @@
 class SlingShot  extends Pin {
     constructor(x, y, body) {
         super(x, y, body)
-        this.options.label = "sling"
+        this.body.label = "sling"
         this.sound = slingSound
-        this.sling = Constraint.create(this.options)
-        World.add(world, this.sling)
     }
 
     fly() {
         this.sound.play()
-        this.sling.bodyB = null
-        Composite.remove(world, this.sling, true)
-        slingshots.pop()
+        this.body.bodyB = null
+        Composite.remove(world, this.body, true)
+
     }
 
     draw() {
-        if (this.sling.bodyB) {
+        if (this.body.bodyB) {
             stroke("black")
-            const posA = this.sling.pointA
-            const posB = this.sling.bodyB.position
+            const posA = this.body.pointA
+            const posB = this.body.bodyB.position
             line(posA.x, posA.y, posB.x, posB.y)
         }
     }

@@ -48,3 +48,19 @@ function toggleBox() {
         boundaries.push(ground)
     }
 }
+
+function toggleStatic() {
+    staticMode = !staticMode
+    if (staticMode === true) {
+        world.bodies.forEach(bod => {
+            if (bod.label !== "boundary")
+                Body.setStatic(bod, true)
+        })
+    }
+    if (staticMode === false) {
+        world.bodies.forEach(bod => {
+            if (bod.label !== "boundary")
+                Body.setStatic(bod, false)
+        })
+    }
+}

@@ -16,6 +16,7 @@ class Boundary {
 
 	createBody() {
 		this.body = Bodies.rectangle(this.x, this.y, this.w, this.h, window.params.pparams)
+		this.body.label = "boundary"
 		World.add(world, this.body)
 		this.body.isStatic = true		
 	}
