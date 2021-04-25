@@ -8,16 +8,25 @@ function isShapeClicked() {
     if (lines[i]) {
       let verts = lines[i].body.vertices
       if (Vertices.contains(verts, {x: actualX, y: actualY})) {
-        selection.push(lines[i])
         clieck = true
         lines[i].selected = !lines[i].selected
+        if (lines[i].selected === false) {
+          let index = extractSelectedIndex(lines[i], "line")
+          selection.splice(index, 1)
+        } else {
+          selection.push(lines[i])
+        }
       }
     } if (balls[i]) {
       let verts = balls[i].body.vertices
       if (Vertices.contains(verts, {x: actualX, y: actualY})) {
-        selection.push(balls[i])
         clieck = true
         balls[i].selected = !balls[i].selected
+        if (balls[i].selected === false) {
+          selection.pop(balls[i])
+        } else {
+          selection.push(balls[i])
+        }
       }
     }
     i++
@@ -46,6 +55,11 @@ function randomColor() {
 function isNotInToolbar() {
   return mouseX > 40
 }
+
+function isNotInParams() {
+  return mouseX < window.innerWidth - 110
+}
+
 
 function addShape() {
   let l = balls.length
@@ -83,7 +97,9 @@ function linkSelection() {
   let selection = selectedBodies()
   let k = 0
   if (selection.length === 1) {
-    slingshots.push(new Pin(selection[0].body.position.x, selection[0].body.position.y, selection[0].body))
+    let pinou = new Pin(selection[0].body.position.x, selection[0].body.position.y, selection[0].body)
+    pinou.init()
+    slingshots.push(pinou)
   }
   while (k < selection.length - 1) {
     let distance = getDistance(selection[k].body.position.x, selection[k].body.position.y, selection[k + 1].body.position.x, selection[k + 1].body.position.y);
@@ -120,7 +136,7 @@ function handleSlingShots() {
 }
 
 function releaseSlingShotOrNot() {
-  if (currentlySlinged && currentlySlinged.body.label === "sling" && currentlySlinged.body.bodyB && currentlySlinged.body.bodyB.speed > currentlySlinged.body.stiffness * 25 ) {
+  if (currentlySlinged && currentlySlinged.body.bodyB && currentlySlinged.body.bodyB.speed > currentlySlinged.body.stiffness * 25 ) {
     let newB
     if (currentlySlinged.body.bodyB.label === "Rectangle Body") {
       newB = new Square(currentlySlinged.body.pointA.x, currentlySlinged.body.pointA.y, balls.length);
@@ -129,8 +145,32 @@ function releaseSlingShotOrNot() {
     }
     let newSl = new SlingShot(currentlySlinged.body.pointA.x, currentlySlinged.body.pointA.y, newB.body );
     currentlySlinged.fly()
-    let index = extractSelectedIndex(currentlySlinged, "slingshot")
     slingshots.push(newSl)
     balls.push(newB)
   }
+}
+
+function updateSelectionParams(key, newVal, type) {
+  newVal = parseFloat(newVal)
+  if (type === "circle") {
+
+    console.log("circle radius")
+    item.body.circleRadius = newVal
+  }
+}
+
+function updateSelectedBody(item, key, newVal) {
+  item.body[key] = newVal
+}
+
+function updateSelectedCircle(item, key, newVal) {
+
+}
+
+function updateSelectedSquare(item, key, newVal) {
+
+}
+
+function updateSelectedConstraint(item, key, newVal) {
+
 }

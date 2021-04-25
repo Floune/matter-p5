@@ -9,14 +9,13 @@ class Pin {
             stiffness: window.params.constraint.stiffness,
             length: window.params.constraint.length,
         }
+    }
+
+    init() {
         this.body = Constraint.create(this.options)
         World.add(world, this.body)
         constr.push(this.body)
         handleUndoBuffer(constr)
-        this.init()
-    }
-
-    init() {
         this.body.label = "pin"
     }
 

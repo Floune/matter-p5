@@ -46,9 +46,32 @@
 			display: inline-block;
 		}
 		#controls input {
-			
+			width: 90px;
 		}
 		#controls span {
+			width: 80px;
+			letter-spacing: -1px;
+			display: inline-block;
+		}
+
+		#controls-selection {
+			position: fixed;
+			top: 300px;
+			right: 0;
+			background-color: white;
+		}
+		#controls-selection>div {
+		}
+
+		#controls-selection label {
+			width: 80px;
+			letter-spacing: -1px;
+			display: inline-block;
+		}
+		#controls-selection input {
+			width: 90px;
+		}
+		#controls-selection span {
 			width: 80px;
 			letter-spacing: -1px;
 			display: inline-block;
@@ -77,6 +100,7 @@
 </head>
 <body>
 	<div id="controls"></div>
+	<div id="controls-selection"></div>
 	<div id="buttons"></div>
 
 	<script src="./js/objects/ground.js"></script>
@@ -92,6 +116,7 @@
 	<script src="./js/objects/square.js"></script>
 	<script src="./js/objects/line.js"></script>
 	<script src="./js/objects/ghost-line.js"></script>
+	<!--<script src="./js/utils/controlsSelectedBodies.js"></script>-->
 	<script src="./js/objects/Pin.js"></script>
 	<script src="./js/objects/slingshot.js"></script>
 	<script src="./js/utils/controls.js"></script>

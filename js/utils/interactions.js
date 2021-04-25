@@ -7,9 +7,9 @@ function enableMouse() {
 }
 
 function mousePressed() {
-  if (drawmode === true && isNotInToolbar()) {
+  if (drawmode === true && isNotInToolbar() && isNotInParams()) {
     handleDrawModeClic()
-  } else {
+  } else if (isNotInParams()) {
     handleInteractionModeClic()
   }
 }

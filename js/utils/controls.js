@@ -2,30 +2,30 @@
 const ui = document.getElementById('controls')
 
 const controls = [
-	{name:'density', key: 'density', category:'pparams', min:0, max: 0.01, step: 0.001, defaultValue: 0.001},
-	{name:'friction', key: 'friction', category:'pparams' , min:0, max: 1, step: 0.01, defaultValue: 0.01},
-	{name:'frictionAir', key: 'frictionAir', category:'pparams' , min: 0, max: 1, step: 0.005, defaultValue: 0.00001},
-	{name:'restitution', key: 'restitution', category:'pparams' , min:0.1, max: 1, step: 0.1, defaultValue: 1},
-	{name:'circle-radius', key: 'r', category:'ball' , min:1, max: 100, step: 1, defaultValue: 10},
-	{name:'rect-width', key: 'w', category:'square' , min:1, max: 300, step: 1, defaultValue: 10},
-	{name:'rect-height', key: 'h', category:'square' , min:1, max: 300, step: 1, defaultValue: 10},
-	{name:'line-height', key: 'h', category:'line' , min:1, max: 50, step: 1, defaultValue: 10},
-	{name:'stiffness', key: 'stiffness', category:'constraint' , min:0, max: 1, step: 0.01, defaultValue: 0.02},
-	{name:'sling-length', key: 'length', category:'constraint' , min:0, max: 400, step: 10, defaultValue: 0},
+	{name:'density', type:'all', key: 'density', category:'pparams', min:0, max: 1, step: 0.01, defaultValue: 0.01},
+	{name:'friction', type:'all', key: 'friction', category:'pparams' , min:0, max: 1, step: 0.01, defaultValue: 0.01},
+	{name:'frictionAir', type:'all', key: 'frictionAir', category:'pparams' , min: 0, max: 1, step: 0.005, defaultValue: 0.00001},
+	{name:'restitution', type:'all', key: 'restitution', category:'pparams' , min:0, max: 1, step: 0.1, defaultValue: 1},
+	{name:'radius', type:'Circle Body', key: 'r', category:'ball' , min:1, max: 100, step: 1, defaultValue: 10},
+	{name:'rect-width', type:'Rectangle Body', key: 'w', category:'square' , min:1, max: 300, step: 1, defaultValue: 10},
+	{name:'rect-height', type:'Rectangle Body', key: 'h', category:'square' , min:1, max: 300, step: 1, defaultValue: 10},
+	{name:'line-height', type:'line', key: 'h', category:'line' , min:1, max: 50, step: 1, defaultValue: 10},
+	{name:'stiffness',type:'constraint',  key: 'stiffness', category:'constraint' , min:0, max: 1, step: 0.01, defaultValue: 0.02},
+	{name:'sling-length',type:'constraint',  key: 'length', category:'constraint' , min:0, max: 400, step: 10, defaultValue: 0},
 ]
 
 
 controls.map(c => {
 	const el = document.createElement('div')
-	el.innerHTML = `<label>${c.name}</label>
-	<input type="range" name="${c.name}" min="${c.min}" max="${c.max}" step="${c.step}" value="${c.defaultValue}">
-	<span display>${c.defaultValue}</span>
+	el.innerHTML = `<label for="${c.name}">${c.name}</label>
+	<input type="number" name="${c.name}" min="${c.min}" max="${c.max}" step="${c.step}" value="${c.defaultValue}">
 
 	`
 	el.addEventListener('input', (e)=>{
 		const newVal = e.target.value
-		el.querySelector('span').innerHTML = newVal
 		window.params[c.category][c.key] = newVal
+		const type = c.type
+		updateSelectionParams(c.key, newVal, type)
 	})
 	ui.appendChild(el)
 })

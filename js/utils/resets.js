@@ -4,6 +4,7 @@ function resetLines() {
   })
   lines = []
   lastCreatedBuffer = []
+  deselectAll()
 }
 
 function resetBalls() {
@@ -12,6 +13,7 @@ function resetBalls() {
   })
   balls = [];
   lastCreatedBuffer = []
+  deselectAll()
 }
 
 function resetConstraints() {
@@ -23,18 +25,17 @@ function resetConstraints() {
   links = []
   slingshots = []
   lastCreatedBuffer = []
+  deselectAll()
 }
 
 function resetSketch() {
   resetLines()
   resetBalls()
   resetConstraints()
-  lastCreatedBuffer = []
 }
 
 function undou() {
   let item = lastCreatedBuffer.pop()
-  console.log(item)
   if (item) {
     if (item.body && item.body.label === "line") {
       let index = extractSelectedIndex(item, "line")
