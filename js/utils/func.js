@@ -143,6 +143,8 @@ function releaseSlingShotOrNot() {
     } else if (currentlySlinged.body.bodyB.label === "Circle Body") {
       newB = new Ball(currentlySlinged.body.pointA.x, currentlySlinged.body.pointA.y, balls.length, currentlySlinged.body.bodyB.circleRadius)
     }
+    let index = extractSelectedIndex(currentlySlinged, "slingshot")
+    slingshots.splice(index, 1);
     let newSl = new SlingShot(currentlySlinged.body.pointA.x, currentlySlinged.body.pointA.y, newB.body );
     currentlySlinged.fly()
     slingshots.push(newSl)
@@ -152,11 +154,13 @@ function releaseSlingShotOrNot() {
 
 function updateSelectionParams(key, newVal, type) {
   newVal = parseFloat(newVal)
-  if (type === "circle") {
-
-    console.log("circle radius")
-    item.body.circleRadius = newVal
-  }
+  selection.forEach(item => {
+    if (item.body.label === type)
+      if (type === "Circle Body") {
+        console.log("circle radius")
+        item.body.circleRadius = newVal
+      }
+  })
 }
 
 function updateSelectedBody(item, key, newVal) {
