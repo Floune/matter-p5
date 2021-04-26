@@ -79,7 +79,7 @@ function keyPressed() {
 }
 
 function mouseReleased() {
-  if (drawmode === true) {
+  if (drawmode === true && isNotInParams()) {
     handleDrawModeRelease()
   } else if (drawmode === false) {
     handleSlingShots()
