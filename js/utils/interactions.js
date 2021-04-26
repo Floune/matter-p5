@@ -70,6 +70,10 @@ function keyPressed() {
     case 67:
       resetConstraints()
       break;
+      //m
+    case 77:
+      lockUnlockselection()
+      break;
   }
 
 }

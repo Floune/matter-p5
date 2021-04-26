@@ -57,7 +57,11 @@ function isNotInToolbar() {
 }
 
 function isNotInParams() {
-  return mouseX < window.innerWidth - 110
+  var element = document.getElementById("controls")
+  var style = window.getComputedStyle(element);
+  var xlimit = width - parseInt(style.getPropertyValue("width"))
+  var ylimit = parseInt(style.getPropertyValue("height"))
+  return !(!(mouseX < xlimit) && !(mouseY > ylimit))
 }
 
 
@@ -136,7 +140,7 @@ function handleSlingShots() {
 }
 
 function releaseSlingShotOrNot() {
-  if (currentlySlinged && currentlySlinged.body.bodyB && currentlySlinged.body.bodyB.speed > currentlySlinged.body.stiffness * 25 ) {
+  if (currentlySlinged && currentlySlinged.body.label === "sling" && currentlySlinged.body.bodyB && currentlySlinged.body.bodyB.speed > currentlySlinged.body.stiffness * 25 ) {
     let newB
     if (currentlySlinged.body.bodyB.label === "Rectangle Body") {
       newB = new Square(currentlySlinged.body.pointA.x, currentlySlinged.body.pointA.y, balls.length);

@@ -19,7 +19,6 @@ class SlingShot  extends Pin {
 
     draw() {
         if (this.body.bodyB) {
-            stroke("black")
             const posA = this.body.pointA
             const posB = this.body.bodyB.position
             line(posA.x, posA.y, posB.x, posB.y)

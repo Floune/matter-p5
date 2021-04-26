@@ -21,7 +21,6 @@ controls.map(c => {
 	<input type="number" name="${c.name}" min="${c.min}" max="${c.max}" step="${c.step}" value="${c.defaultValue}">
 	`
 	el.addEventListener("keypress", function (evt) {
-		console.log(evt)
 		if (evt.target.value < 48 || evt.target.value > 57 || evt.target.value < c.min || evt.target.value > c.max)
 		{
 			evt.preventDefault();

@@ -1,5 +1,4 @@
 function lockUnlockselection() {
-  console.log("qsfqdf")
   selection.forEach(item => {
       item.body.isStatic === true ? Body.setStatic(item.body, false) : Body.setStatic(item.body, true)
   })
