@@ -19,8 +19,14 @@ controls.map(c => {
 	const el = document.createElement('div')
 	el.innerHTML = `<label for="${c.name}">${c.name}</label>
 	<input type="number" name="${c.name}" min="${c.min}" max="${c.max}" step="${c.step}" value="${c.defaultValue}">
-
 	`
+	el.addEventListener("keypress", function (evt) {
+		console.log(evt)
+		if (evt.target.value < 48 || evt.target.value > 57 || evt.target.value < c.min || evt.target.value > c.max)
+		{
+			evt.preventDefault();
+		}
+	});
 	el.addEventListener('input', (e)=>{
 		const newVal = e.target.value
 		window.params[c.category][c.key] = newVal
@@ -41,12 +47,12 @@ const triggers = [
 	{label:"south", action:"gravity", descr:"toggle gravity"},
 	{label:"calendar_view_month", action:"grid", descr:"toggle grid"},
 	{label:"picture_in_picture", action:"box", descr:"toggleBox"},
-	{label:"cached", action:"spin", descr:"spin selection"},
-	{label:"share", action:"link", descr:"link shapes"},
-	{label:"upgrade", action:"slingshot", descr:"slingshot!"},
 	{label:"horizontal_rule", action:"barrier", descr:"barrier"},
 	{label:"circle", action:"circle", descr:"circle"},
 	{label:"panorama_wide_angle_select", action:"square", descr:"square"},
+	{label:"cached", action:"spin", descr:"spin selection"},
+	{label:"share", action:"link", descr:"link shapes"},
+	{label:"upgrade", action:"slingshot", descr:"slingshot!"},
 ]
 
 const actions = {
