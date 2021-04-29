@@ -1,0 +1,29 @@
+{
+    "compilerOptions": {
+        "moduleResolution": "node",
+        "target": "es5",
+        "lib": [ "dom", "es5", "es6", "es7", "esnext" ],
+        "sourceMap": false,
+        "declaration": false,
+        "declarationMap": false,
+        "removeComments": true,
+        "esModuleInterop": true,
+        "downlevelIteration": true,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "allowSyntheticDefaultImports": true,
+        "strict": true,
+        "alwaysStrict": true,
+        "noImplicitAny": true,
+        "noImplicitThis": true,
+        "strictBindCallApply": true,
+        "strictFunctionTypes": true,
+        "strictNullChecks": false,
+        "strictPropertyInitialization": false,
+        "suppressImplicitAnyIndexErrors": true
+    },
+    "include": [
+        "src/**/*"
+    ],
+    "exclude": []
+}
