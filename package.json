@@ -5,8 +5,8 @@
   "author": "Floune",
   "license": "MIT",
   "scripts": {
-    "build": "rollup -c",
-    "watch": "rollup -c -w",
+    "build": "rollup -c rollup.config.js",
+    "watch": "rollup -c rollup.config.js -w",
     "dev": "npm-run-all --parallel watch start",
     "start": "serve public",
     "ts": "tsc --build tsconfig.json",
