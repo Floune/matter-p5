@@ -54,7 +54,7 @@ export class Mouse {
         break;
       case 'click':
         this.on('mousedown');
-        this.on('mousedown');
+        this.on('mouseup');
         break;
       default:
         break;

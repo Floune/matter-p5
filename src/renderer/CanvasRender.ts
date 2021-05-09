@@ -29,8 +29,7 @@ export class CanvasRender {
     const ctx = this.canvas.getContext('2d');
 
     this.ctx = ctx;
-
-    this.setBackgroundColor(0xfff);
+    this.setBackgroundColor(parseInt('FFFFFF', 16));
     this.resize(this.width, this.height, this.resolution);
   }
 
@@ -68,8 +67,6 @@ export class CanvasRender {
 
     this.clearColor = `rgba(${red}, ${green}, ${blue}, ${alpha})`;
 
-    console.log('color', this.clearColor);
-
     return this;
   }
 
@@ -98,7 +95,7 @@ export class CanvasRender {
 
     if (this.clearBeforeRender) {
       ctx.clearRect(0, 0, this.width, this.height);
-      ctx.fillStyle = 'white';
+      ctx.fillStyle = this.clearColor;
       ctx.fillRect(0, 0, this.width, this.height);
     }
   }
