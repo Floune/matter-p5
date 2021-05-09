@@ -4,9 +4,7 @@
  */
 export class CanvasRender {
   canvas: HTMLCanvasElement;
-
   ctx: CanvasRenderingContext2D;
-
   width: number = 800;
   height: number = 600;
   resolution: number;
@@ -32,7 +30,7 @@ export class CanvasRender {
 
     this.ctx = ctx;
 
-    this.setBackgroundColor(0);
+    this.setBackgroundColor(0xfff);
     this.resize(this.width, this.height, this.resolution);
   }
 
@@ -70,6 +68,8 @@ export class CanvasRender {
 
     this.clearColor = `rgba(${red}, ${green}, ${blue}, ${alpha})`;
 
+    console.log('color', this.clearColor);
+
     return this;
   }
 
@@ -98,7 +98,7 @@ export class CanvasRender {
 
     if (this.clearBeforeRender) {
       ctx.clearRect(0, 0, this.width, this.height);
-      ctx.fillStyle = 'blue';
+      ctx.fillStyle = 'white';
       ctx.fillRect(0, 0, this.width, this.height);
     }
   }
