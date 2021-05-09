@@ -1,0 +1,37 @@
+{
+  "name": "matter-p5",
+  "version": "1.0.0",
+  "repository": "https://github.com/AllanCerveaux/matter-p5.git",
+  "author": "Floune",
+  "license": "MIT",
+  "scripts": {
+    "build": "rollup -c rollup.config.js",
+    "watch": "rollup -c rollup.config.js -w",
+    "dev": "npm-run-all --parallel watch start",
+    "start": "serve public",
+    "ts": "tsc --build tsconfig.json",
+    "lint": "eslint ./src --fix --ext .ts"
+  },
+  "devDependencies": {
+    "@rollup/plugin-node-resolve": "^11.2.1",
+    "@typescript-eslint/eslint-plugin": "4.22.0",
+    "@typescript-eslint/parser": "4.22.0",
+    "directory-tree": "^2.2.9",
+    "esbuild": "^0.11.16",
+    "eslint": "^7.25.0",
+    "fs-extra": "^9.1.0",
+    "npm-run-all": "^4.1.5",
+    "rollup": "^2.45.2",
+    "rollup-plugin-filesize": "9.1.1",
+    "rollup-plugin-terser": "^7.0.2",
+    "rollup-plugin-typescript2": "^0.30.0",
+    "rollup-plugin-livereload": "^2.0.0",
+    "serve": "^11.3.2",
+    "tslib": "^2.2.0",
+    "typescript": "^4.2.4",
+    "uplot": "^1.6.8"
+  },
+  "dependencies": {
+    "matterjs": "^0.1.3"
+  }
+}

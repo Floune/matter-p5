@@ -1,0 +1,6 @@
+/node_modules/*
+/dist/*
+/tempdist/*
+**/*.js
+.eslintrc.js
+tsconfig-udm.json
