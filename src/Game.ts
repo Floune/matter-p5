@@ -7,12 +7,14 @@ export class Game {
 
   render: CanvasRender;
   context: CanvasRenderingContext2D;
+
   mouse: Mouse;
   painting: boolean = false;
 
   contructor() {}
 
   boot(): void {
+    console.log('boot');
     const render = new CanvasRender();
     let time = performance.now();
 
@@ -22,19 +24,18 @@ export class Game {
 
     this.render.render();
 
-    this.step(time);
-
     this.context = this.render.ctx;
 
     this.mouse = new Mouse();
     this.mouse.on('mousemove');
     this.mouse.on('click');
+
+    this.step(time);
   }
 
   step = (t?: number): void => {
     window.requestAnimationFrame(this.step);
 
-    console.log('pos :', this.mouse.position, 'mousedown :', this.mouse.mouseDown);
     this.draw();
   };
 
