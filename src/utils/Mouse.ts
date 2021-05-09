@@ -1,9 +1,15 @@
-export class Mouse {
+import { Dic } from '../types/Dic';
+import { EventClass } from '../types/EventClass';
+
+export class Mouse extends EventClass {
   private _x: number;
   private _y: number;
   private _mouseDown: boolean;
+  callback: Dic<any[]>;
+  deltaY: number = 0;
 
   constructor() {
+    super();
     this._x = 0;
     this._y = 0;
     this._mouseDown = false;
@@ -31,19 +37,17 @@ export class Mouse {
     this._mouseDown = value;
   }
   get mouseDown(): boolean {
+    this.on('mousedown');
     return this._mouseDown;
   }
 
-  on(eventName: string, callback?: Function) {
-    document.addEventListener(eventName, this);
-  }
-
   handleEvent(event: Event): void {
+    let mouseEvent: MouseEvent = event as MouseEvent; // re-type event to get mouse event
+    let wheelEvent: WheelEvent = event as WheelEvent;
     switch (event.type) {
       case 'mousemove':
-        let e: MouseEvent = event as MouseEvent; // re-type event to get mouse event
-        this.x = e?.clientX;
-        this.y = e?.clientY;
+        this.x = mouseEvent?.clientX;
+        this.y = mouseEvent?.clientY;
         break;
       case 'mousedown':
         this.mouseDown = true;
@@ -55,6 +59,9 @@ export class Mouse {
       case 'click':
         this.on('mousedown');
         this.on('mouseup');
+        break;
+      case 'wheel':
+        this.deltaY = wheelEvent.deltaY;
         break;
       default:
         break;

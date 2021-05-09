@@ -12,10 +12,12 @@ export class CanvasRender {
 
   clearBeforeRender: boolean = true;
 
-  constructor() {
+  constructor(options?: { width?: number; height?: number }) {
     const canvas = document.createElement('canvas');
 
     this.canvas = canvas;
+    this.width = options.width;
+    this.height = options.height;
 
     this.startContext();
   }
@@ -29,7 +31,7 @@ export class CanvasRender {
     const ctx = this.canvas.getContext('2d');
 
     this.ctx = ctx;
-    this.setBackgroundColor(parseInt('FFFFFF', 16));
+    this.setBackgroundColor(parseInt('F1F1F1', 16));
     this.resize(this.width, this.height, this.resolution);
   }
 
