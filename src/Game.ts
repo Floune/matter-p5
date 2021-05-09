@@ -55,12 +55,4 @@ export class Game {
   reset(): void {
     this.context.clearRect(0, 0, this.render.width, this.render.height);
   }
-
-  listeners(): void {
-    if (this.mouse._mouseDown) {
-      this.context.moveTo(this.mouse.xPos, this.mouse.yPos);
-    } else {
-      this.context.closePath();
-    }
-  }
 }
