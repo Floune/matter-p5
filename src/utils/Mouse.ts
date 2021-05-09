@@ -1,25 +1,35 @@
 export class Mouse {
-  x: number;
-  y: number;
-  _mouseDown: boolean = false;
+  private _x: number;
+  private _y: number;
+  private _mouseDown: boolean;
 
   constructor() {
-    this.x = 0;
-    this.y = 0;
+    this._x = 0;
+    this._y = 0;
+    this._mouseDown = false;
   }
 
-  get xPos(): number {
-    return this.x;
+  set x(value: number) {
+    this._x = value;
+  }
+  get x(): number {
+    return this._x;
   }
 
-  get yPos(): number {
-    return this.y;
+  set y(value: number) {
+    this._y = value;
+  }
+  get y(): number {
+    return this._y;
   }
 
   get position(): string {
     return `x: ${this.y} / y: ${this.y}`;
   }
 
+  set mouseDown(value: boolean) {
+    this._mouseDown = value;
+  }
   get mouseDown(): boolean {
     return this._mouseDown;
   }
@@ -36,11 +46,11 @@ export class Mouse {
         this.y = e?.clientY;
         break;
       case 'mousedown':
-        this._mouseDown = true;
+        this.mouseDown = true;
         this.on('mouseup');
         break;
       case 'mouseup':
-        this._mouseDown = false;
+        this.mouseDown = false;
         break;
       case 'click':
         this.on('mousedown');
