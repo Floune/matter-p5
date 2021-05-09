@@ -26,13 +26,10 @@ module.exports = {
         "**/*.js",
         "**/*.mjs",
         "/node_modules/**/*",
-        "src/stats/",
-        "src/motion/tween/Tween.ts",
-        "src/motion/tween/TweenPlugin.ts",
-        "src/motion/tween/ITweenPlugin.ts",
         "/dist/*",
         "/dev/*",
-        "/src/textures/parsers/BitmapTextParser.ts"
+        "/src/textures/parsers/BitmapTextParser.ts",
+        "./tsconfig-udm.json"
     ],
     "rules": {
         "@typescript-eslint/ban-types": [ "off" ],

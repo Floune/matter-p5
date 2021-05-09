@@ -1,8 +1,8 @@
 import filesize from 'rollup-plugin-filesize';
+import livereload from 'rollup-plugin-livereload';
 import resolve from '@rollup/plugin-node-resolve';
 import { terser } from 'rollup-plugin-terser';
 import typescript from 'rollup-plugin-typescript2';
-
 // Can't use official TypeScript plugin because: https://github.com/rollup/plugins/issues/287
 
 const extensions = [
@@ -77,7 +77,8 @@ export default [
       }),
       typescript({
         tsconfig: 'tsconfig-udm.json'
-      })
+      }),
+      livereload('public'),
     ]
-	}
+  }
 ];
