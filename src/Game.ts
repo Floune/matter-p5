@@ -22,12 +22,13 @@ export class Game {
 
     this.render.render();
 
+    this.step(time);
+
     this.context = this.render.ctx;
 
     this.mouse = new Mouse();
     this.mouse.on('mousemove');
     this.mouse.on('click');
-    this.step(time);
   }
 
   step = (t?: number): void => {
@@ -44,8 +45,8 @@ export class Game {
       this.painting = true;
     }
 
-    if (this.mouse._mouseDown && this.painting) {
-      this.context.lineTo(this.mouse.xPos, this.mouse.yPos);
+    if (this.mouse.mouseDown && this.painting) {
+      this.context.lineTo(this.mouse.x, this.mouse.y);
       this.context.stroke();
     } else {
       this.painting = false;
