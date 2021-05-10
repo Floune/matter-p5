@@ -27,9 +27,7 @@ module.exports = {
         "**/*.mjs",
         "/node_modules/**/*",
         "/dist/*",
-        "/dev/*",
-        "/src/textures/parsers/BitmapTextParser.ts",
-        "./tsconfig-udm.json"
+        "/tsconfig-udm.json"
     ],
     "rules": {
         "@typescript-eslint/ban-types": [ "off" ],
