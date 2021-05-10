@@ -4,6 +4,7 @@ export class Mouse extends MouseAbstract {
   get isMoved(): boolean {
     this.on('mousemove');
     setTimeout(() => {
+      // we should find a better way to do it
       this.move = false;
     }, 100);
     return this.move;
