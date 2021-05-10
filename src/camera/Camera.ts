@@ -1,5 +1,3 @@
-import { Mouse } from '../mouse';
-
 export class Camera {
   _x: number;
   _y: number;
@@ -7,11 +5,8 @@ export class Camera {
   startDragOffset: { x: number; y: number };
   scale: number = 1.0;
   scaleMultiplier: number = 0.8;
-  mouse: Mouse;
 
   constructor() {
-    this.mouse = new Mouse();
-    this.mouse.on('mousemove');
     this.startDragOffset = {
       x: 0,
       y: 0
@@ -37,7 +32,6 @@ export class Camera {
   }
 
   zoomIn() {
-    console.log(this.mouse.x, this.mouse.y);
     this.scale /= this.scaleMultiplier;
   }
 }
