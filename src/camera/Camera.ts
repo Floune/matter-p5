@@ -1,4 +1,4 @@
-import { Mouse } from '../utils/Mouse';
+import { Mouse } from '../mouse';
 
 export class Camera {
   _x: number;
