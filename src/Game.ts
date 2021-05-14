@@ -1,6 +1,7 @@
 import { AddToDom } from './dom';
+import { Camera } from './camera/Camera';
 import { CanvasRender } from './renderer';
-import { Mouse } from './utils/Mouse';
+import { Mouse } from './mouse/Mouse';
 
 export class Game {
   readonly version: string = '0.0.1-Alpha-Bravo-Charlie-Tango';
@@ -9,13 +10,14 @@ export class Game {
   context: CanvasRenderingContext2D;
 
   mouse: Mouse;
+  camera: Camera;
   painting: boolean = false;
 
   contructor() {}
 
   boot(): void {
     console.log('boot');
-    const render = new CanvasRender();
+    const render = new CanvasRender({ width: window.innerWidth, height: window.innerHeight });
     let time = performance.now();
 
     this.render = render;
@@ -26,33 +28,19 @@ export class Game {
 
     this.context = this.render.ctx;
 
+    this.context.strokeStyle = 'red';
+
+    // this.context.scale(1.5, 1.5);
+
     this.mouse = new Mouse();
-    this.mouse.on('mousemove');
-    this.mouse.on('click');
+    this.camera = new Camera();
 
     this.step(time);
   }
 
   step = (t?: number): void => {
     window.requestAnimationFrame(this.step);
-
-    this.draw();
   };
-
-  draw(): void {
-    //this.reset()
-    if (!this.painting) {
-      this.context.beginPath();
-      this.painting = true;
-    }
-
-    if (this.mouse.mouseDown && this.painting) {
-      this.context.lineTo(this.mouse.x, this.mouse.y);
-      this.context.stroke();
-    } else {
-      this.painting = false;
-    }
-  }
 
   reset(): void {
     this.context.clearRect(0, 0, this.render.width, this.render.height);
